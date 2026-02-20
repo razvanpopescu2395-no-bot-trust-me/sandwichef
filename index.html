@@ -1,0 +1,587 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sandwichef - Meniu Urban</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;800;900&family=Permanent+Marker&display=swap" rel="stylesheet">
+    
+    <style>
+        /* --- SETĂRI GENERALE ȘI VARIABILE --- */
+        :root {
+            --primary-color: #ff3e3e;
+            --secondary-color: #2d3436;
+            --bg-color: #f4f4f9;
+            --card-bg: #ffffff;
+            --text-color: #4a4a4a;
+            --shadow-soft: 0 10px 20px rgba(0,0,0,0.08);
+            --shadow-hover: 0 15px 30px rgba(255, 62, 62, 0.15);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Montserrat', sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        /* --- HERO SECTION (HEADER DINAMIC) --- */
+        header {
+            background: linear-gradient(rgba(45, 52, 54, 0.8), rgba(45, 52, 54, 0.8)), url('sandvis-snitel-cartofi.png') center/cover no-repeat fixed;
+            height: 65vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            color: white;
+            position: relative;
+        }
+
+        .header-content h1 {
+            font-family: 'Permanent Marker', cursive;
+            font-size: 5rem;
+            color: var(--primary-color);
+            text-shadow: 2px 2px 10px rgba(0,0,0,0.5);
+            transform: rotate(-3deg);
+            margin-bottom: 10px;
+        }
+
+        .header-content h2 {
+            font-weight: 900;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            font-size: 2rem;
+        }
+
+        /* --- CONTAINER PRINCIPAL --- */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 40px 20px;
+        }
+
+        .category-title {
+            text-align: center;
+            font-family: 'Permanent Marker', cursive;
+            font-size: 3rem;
+            color: var(--secondary-color);
+            margin: 60px 0 30px 0;
+            position: relative;
+            display: inline-block;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+        
+        .category-title::after {
+            content: '';
+            display: block;
+            width: 60%;
+            height: 4px;
+            background: var(--primary-color);
+            margin: 10px auto 0 auto;
+            border-radius: 2px;
+        }
+
+        /* --- GRID PENTRU MENIU (DESIGN DE CARDURI) --- */
+        .menu-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 30px;
+            padding-bottom: 40px;
+        }
+
+        .menu-card {
+            background: var(--card-bg);
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: var(--shadow-soft);
+            transition: all 0.3s ease;
+            display: flex;
+            flex-direction: column;
+            border: 1px solid transparent;
+        }
+
+        .menu-card:hover {
+            transform: translateY(-10px);
+            box-shadow: var(--shadow-hover);
+            border-color: rgba(255, 62, 62, 0.3);
+        }
+
+        .card-image {
+            height: 220px;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .card-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+
+        .menu-card:hover .card-image img {
+            transform: scale(1.05);
+        }
+
+        .card-content {
+            padding: 25px;
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .card-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 10px;
+            border-bottom: 2px solid #f0f0f0;
+            padding-bottom: 10px;
+        }
+
+        .item-title {
+            font-weight: 800;
+            font-size: 1.2rem;
+            color: var(--secondary-color);
+            text-transform: uppercase;
+            line-height: 1.2;
+        }
+
+        .item-price {
+            font-family: 'Permanent Marker', cursive;
+            color: var(--primary-color);
+            font-size: 1.5rem;
+            margin-left: 15px;
+            white-space: nowrap;
+        }
+
+        .item-details {
+            font-size: 0.85rem;
+            color: white;
+            background-color: var(--primary-color);
+            padding: 3px 8px;
+            border-radius: 5px;
+            font-weight: 700;
+            display: inline-block;
+            margin-bottom: 15px;
+            align-self: flex-start;
+        }
+
+        .item-number {
+            color: var(--primary-color);
+            margin-right: 5px;
+        }
+
+        /* --- STIL LISTĂ INGREDIENTE --- */
+        .item-ingredients-list {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            display: flex;
+            flex-direction: column;
+            gap: 6px;
+        }
+
+        .item-ingredients-list li {
+            font-size: 0.9rem;
+            color: var(--text-color);
+            display: flex;
+            align-items: center;
+        }
+
+        .item-ingredients-list li .emoji {
+            margin-right: 8px;
+            font-size: 1.1rem;
+            width: 25px;
+            text-align: center;
+        }
+
+        /* --- SECȚIUNEA BĂUTURI --- */
+        .drinks-list {
+            background: white;
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: var(--shadow-soft);
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .drink-item {
+            display: flex;
+            justify-content: space-between;
+            padding: 10px 0;
+            border-bottom: 2px dotted #eee;
+            font-weight: 700;
+            color: var(--secondary-color);
+        }
+        .drink-item span:last-child {
+            color: var(--primary-color);
+        }
+
+        /* --- FOOTER --- */
+        footer {
+            background: var(--secondary-color);
+            color: white;
+            text-align: center;
+            padding: 40px 20px;
+            margin-top: 60px;
+        }
+
+        /* --- RESPONSIVE --- */
+        @media (max-width: 768px) {
+            .header-content h1 { font-size: 3.5rem; }
+            .header-content h2 { font-size: 1.5rem; }
+            .category-title { font-size: 2.2rem; }
+            .menu-grid { grid-template-columns: 1fr; }
+            .card-image { height: 180px; }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="header-content">
+            <h1>Sandwichef</h1>
+            <h2>Gustul Urban Desăvârșit</h2>
+        </div>
+    </header>
+
+    <main class="container">
+        
+        <h2 class="category-title">Sandwichef Collection</h2>
+        <div class="menu-grid">
+
+            <div class="menu-card">
+                <div class="card-image">
+                    <img src="morning-bacon.png" alt="Morning Sandwich Bacon">
+                </div>
+                <div class="card-content">
+                    <div class="card-header">
+                        <div class="item-title"><span class="item-number">1.</span> Morning Sandwichef Bacon</div>
+                        <div class="item-price">23 RON</div>
+                    </div>
+                    <div class="item-details">260 G</div>
+                    <ul class="item-ingredients-list">
+                        <li><span class="emoji">🥖</span> Chiflă 80g</li>
+                        <li><span class="emoji">🥚</span> Ou 60g</li>
+                        <li><span class="emoji">🍅</span> Roșii 40g</li>
+                        <li><span class="emoji">🥓</span> Bacon 40g</li>
+                        <li><span class="emoji">🧀</span> Cheddar 20g</li>
+                        <li><span class="emoji">🥬</span> Rucola 13g</li>
+                        <li><span class="emoji">🫒</span> Ulei măsline 5g</li>
+                        <li><span class="emoji">🧂</span> Sare 2g</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="menu-card">
+                <div class="card-image">
+                    <img src="bagheta-fresh.png" alt="Bagheta Fresh">
+                </div>
+                <div class="card-content">
+                    <div class="card-header">
+                        <div class="item-title"><span class="item-number">2.</span> Bagheta Fresh</div>
+                        <div class="item-price">28 RON</div>
+                    </div>
+                    <div class="item-details">360 G</div>
+                    <ul class="item-ingredients-list">
+                        <li><span class="emoji">🥖</span> Baghetă 160g</li>
+                        <li><span class="emoji">🧀</span> Cremă brânză 65g</li>
+                        <li><span class="emoji">🍅</span> Roșii 60g</li>
+                        <li><span class="emoji">🍗</span> Șuncă pui 40g</li>
+                        <li><span class="emoji">🧀</span> Brânză topită 30g</li>
+                        <li><span class="emoji">🥬</span> Baby spanac 15g</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="menu-card">
+                <div class="card-image">
+                    <img src="panini-pollo.png" alt="Sandwich cu Șnițel" style="filter: grayscale(30%);">
+                </div>
+                <div class="card-content">
+                    <div class="card-header">
+                        <div class="item-title"><span class="item-number">3.</span> Sandwich cu Șnițel</div>
+                        <div class="item-price">20 RON</div>
+                    </div>
+                    <div class="item-details">250 G</div>
+                    <ul class="item-ingredients-list">
+                        <li><span class="emoji">🥖</span> Chiflă 80g</li>
+                        <li><span class="emoji">🍗</span> Șnițel pui 75g</li>
+                        <li><span class="emoji">🥣</span> Sosul casei 40g</li>
+                        <li><span class="emoji">🍅</span> Roșii 40g</li>
+                        <li><span class="emoji">🥗</span> Salată iceberg 15g</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="menu-card">
+                <div class="card-image">
+                    <img src="wrap-crispy.png" alt="Wrap Crispy">
+                </div>
+                <div class="card-content">
+                    <div class="card-header">
+                        <div class="item-title"><span class="item-number">4.</span> Wrap Crispy</div>
+                        <div class="item-price">23 RON</div>
+                    </div>
+                    <div class="item-details">330 G</div>
+                    <ul class="item-ingredients-list">
+                        <li><span class="emoji">🍗</span> Pui crispy 100g</li>
+                        <li><span class="emoji">🫓</span> Tortilla 90g</li>
+                        <li><span class="emoji">🍅</span> Roșii 70g</li>
+                        <li><span class="emoji">🥣</span> Sosul casei 40g</li>
+                        <li><span class="emoji">🥗</span> Salată iceberg 30g</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="menu-card">
+                <div class="card-image">
+                    <img src="bagheta-salam.png" alt="Sandwich Salam Picant">
+                </div>
+                <div class="card-content">
+                    <div class="card-header">
+                        <div class="item-title"><span class="item-number">5.</span> Sandwich cu Salam Picant</div>
+                        <div class="item-price">28 RON</div>
+                    </div>
+                    <div class="item-details">300 G</div>
+                    <ul class="item-ingredients-list">
+                        <li><span class="emoji">🥖</span> Baghetă 160g</li>
+                        <li><span class="emoji">🥓</span> Salam picant 35g</li>
+                        <li><span class="emoji">🥓</span> Salam chorizo 35g</li>
+                        <li><span class="emoji">🧀</span> Brânză topită 35g</li>
+                        <li><span class="emoji">🥗</span> Salată asortată 25g</li>
+                        <li><span class="emoji">🫒</span> Ulei măsline 5g</li>
+                        <li><span class="emoji">🌶️</span> Fulgi chili 5g</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="menu-card">
+                <div class="card-image">
+                    <img src="bagheta-salam.png" alt="Sandwich Bacon" style="filter: hue-rotate(15deg);">
+                </div>
+                <div class="card-content">
+                    <div class="card-header">
+                        <div class="item-title"><span class="item-number">6.</span> Sandwich cu Bacon</div>
+                        <div class="item-price">30 RON</div>
+                    </div>
+                    <div class="item-details">390 G</div>
+                    <ul class="item-ingredients-list">
+                        <li><span class="emoji">🥖</span> Baghetă 160g</li>
+                        <li><span class="emoji">🥓</span> Bacon 80g</li>
+                        <li><span class="emoji">🍅</span> Roșii 40g</li>
+                        <li><span class="emoji">🫑</span> Ardei copt 40g</li>
+                        <li><span class="emoji">🧀</span> Cheddar 30g</li>
+                        <li><span class="emoji">🧀</span> Brânză topită 30g</li>
+                        <li><span class="emoji">🥬</span> Rucola 10g</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="menu-card">
+                <div class="card-image">
+                    <img src="smashed-vita.png" alt="Smashed Sandwich Vita">
+                </div>
+                <div class="card-content">
+                    <div class="card-header">
+                        <div class="item-title"><span class="item-number">7.</span> Smashed Sandwich Vita</div>
+                        <div class="item-price">28 RON</div>
+                    </div>
+                    <div class="item-details">245 G</div>
+                    <ul class="item-ingredients-list">
+                        <li><span class="emoji">🥩</span> Carne tocată vită 90g</li>
+                        <li><span class="emoji">🥖</span> Chiflă 70g</li>
+                        <li><span class="emoji">🥣</span> Sosul casei 30g</li>
+                        <li><span class="emoji">🧀</span> Cheddar 30g</li>
+                        <li><span class="emoji">🥒</span> Castraveți murați 15g</li>
+                        <li><span class="emoji">🧅</span> Ceapă crispy 10g</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <h2 class="category-title">Panini Gourmet</h2>
+        <div class="menu-grid">
+             <div class="menu-card">
+                <div class="card-image">
+                    <img src="panini-pollo.png" alt="Panini Pollo">
+                </div>
+                <div class="card-content">
+                    <div class="card-header">
+                        <div class="item-title"><span class="item-number">8.</span> Panini Pollo</div>
+                        <div class="item-price">40 RON</div>
+                    </div>
+                    <div class="item-details">530 G</div>
+                    <ul class="item-ingredients-list">
+                        <li><span class="emoji">🍗</span> Șnițel piept pui 180g</li>
+                        <li><span class="emoji">🥖</span> Schiacciata 180g</li>
+                        <li><span class="emoji">🥫</span> Sos de roșii 60g</li>
+                        <li><span class="emoji">🧀</span> Mozzarella 50g</li>
+                        <li><span class="emoji">🌿</span> Pesto 30g</li>
+                        <li><span class="emoji">🥬</span> Rucola 15g</li>
+                        <li><span class="emoji">🧀</span> Parmezan 15g</li>
+                    </ul>
+                </div>
+            </div>
+
+             <div class="menu-card">
+                <div class="card-image">
+                    <img src="sandvis-snitel-cartofi.png" alt="Panini Pofta Mare Frate">
+                </div>
+                <div class="card-content">
+                    <div class="card-header">
+                        <div class="item-title"><span class="item-number">9.</span> Panini Pofta Mare, Frate</div>
+                        <div class="item-price">42 RON</div>
+                    </div>
+                    <div class="item-details">545 G</div>
+                    <ul class="item-ingredients-list">
+                        <li><span class="emoji">🍗</span> Șnițel piept pui 180g</li>
+                        <li><span class="emoji">🥖</span> Schiacciata 180g</li>
+                        <li><span class="emoji">🧀</span> Cheddar 60g</li>
+                        <li><span class="emoji">🍟</span> Cartofi prăjiți 40g</li>
+                        <li><span class="emoji">🥣</span> Sos de ceapă 30g</li>
+                        <li><span class="emoji">🥗</span> Salată asortată 30g</li>
+                        <li><span class="emoji">🥣</span> Sosul casei 25g</li>
+                    </ul>
+                </div>
+            </div>
+
+             <div class="menu-card">
+                <div class="card-image">
+                    <img src="panini-mortadella.png" alt="Panini Mamamia">
+                </div>
+                <div class="card-content">
+                    <div class="card-header">
+                        <div class="item-title"><span class="item-number">10.</span> Panini Mamamia</div>
+                        <div class="item-price">35 RON</div>
+                    </div>
+                    <div class="item-details">515 G</div>
+                    <ul class="item-ingredients-list">
+                        <li><span class="emoji">🥖</span> Schiacciata 180g</li>
+                        <li><span class="emoji">🍖</span> Mortadella 180g</li>
+                        <li><span class="emoji">🧀</span> Cremă brânză cu gorgonzola 75g</li>
+                        <li><span class="emoji">🍅</span> Roșii uscate 40g</li>
+                        <li><span class="emoji">🌿</span> Pesto 20g</li>
+                        <li><span class="emoji">🥬</span> Rucola 15g</li>
+                        <li><span class="emoji">🫒</span> Ulei măsline 5g</li>
+                    </ul>
+                </div>
+            </div>
+
+             <div class="menu-card">
+                <div class="card-image">
+                    <img src="panini-picant.png" alt="Panini Picante">
+                </div>
+                <div class="card-content">
+                    <div class="card-header">
+                        <div class="item-title"><span class="item-number">11.</span> Panini Picante</div>
+                        <div class="item-price">35 RON</div>
+                    </div>
+                    <div class="item-details">420 G</div>
+                    <ul class="item-ingredients-list">
+                        <li><span class="emoji">🥖</span> Schiacciata 180g</li>
+                        <li><span class="emoji">🥓</span> Salam ventricina 80g</li>
+                        <li><span class="emoji">🧀</span> Cremă brânză 70g</li>
+                        <li><span class="emoji">🍅</span> Roșii 70g</li>
+                        <li><span class="emoji">🥬</span> Rucola 15g</li>
+                        <li><span class="emoji">🥣</span> Cremă oțet balsamic 5g</li>
+                    </ul>
+                </div>
+            </div>
+
+             <div class="menu-card">
+                <div class="card-image">
+                    <img src="panini-pollo.png" alt="Panini Primavera" style="transform: scaleX(-1);">
+                </div>
+                <div class="card-content">
+                    <div class="card-header">
+                        <div class="item-title"><span class="item-number">12.</span> Panini Primavera</div>
+                        <div class="item-price">38 RON</div>
+                    </div>
+                    <div class="item-details">490 G</div>
+                    <ul class="item-ingredients-list">
+                        <li><span class="emoji">🥖</span> Schiacciata 180g</li>
+                        <li><span class="emoji">🍗</span> Șnițel piept pui 180g</li>
+                        <li><span class="emoji">🍅</span> Roșii 50g</li>
+                        <li><span class="emoji">🧄</span> Aioli 40g</li>
+                        <li><span class="emoji">🌿</span> Chimichurri 20g</li>
+                        <li><span class="emoji">🥬</span> Rucola 15g</li>
+                        <li><span class="emoji">🧂</span> Piper 3g</li>
+                        <li><span class="emoji">🧂</span> Sare 2g</li>
+                    </ul>
+                </div>
+            </div>
+
+             <div class="menu-card">
+                <div class="card-image">
+                    <img src="panini-picant.png" alt="Panini Napoli" style="filter: sepia(20%);">
+                </div>
+                <div class="card-content">
+                    <div class="card-header">
+                        <div class="item-title"><span class="item-number">13.</span> Panini Napoli</div>
+                        <div class="item-price">38 RON</div>
+                    </div>
+                    <div class="item-details">520 G</div>
+                    <ul class="item-ingredients-list">
+                        <li><span class="emoji">🥖</span> Schiacciata 180g</li>
+                        <li><span class="emoji">🥓</span> Salam napoli 150g</li>
+                        <li><span class="emoji">🧀</span> Cremă brânză 75g</li>
+                        <li><span class="emoji">🍅</span> Roșii 45g</li>
+                        <li><span class="emoji">🧀</span> Mozzarella 40g</li>
+                        <li><span class="emoji">🥗</span> Salată asortată 30g</li>
+                        <li><span class="emoji">🫒</span> Măsline 10g</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <h2 class="category-title">Extra & Răcoritoare</h2>
+        <div class="menu-grid" style="justify-content: center;">
+            <div class="menu-card" style="max-width: 400px; margin: auto;">
+                <div class="card-image" style="height: 180px;">
+                    <img src="cartofi-prajiti.png" alt="Cartofi Prajiti">
+                </div>
+                <div class="card-content">
+                    <div class="card-header">
+                        <div class="item-title"><span class="item-number">14.</span> Cartofi Prăjiți</div>
+                        <div class="item-price">8 RON</div>
+                    </div>
+                    <div class="item-details">120 G</div>
+                    <ul class="item-ingredients-list">
+                        <li><span class="emoji">🍟</span> Cartofi 119g</li>
+                        <li><span class="emoji">🧂</span> Sare 1g</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="drinks-list" style="margin-top: 30px;">
+            <div class="drink-item"><span>🥤 Coca Cola</span> <span>7 RON</span></div>
+            <div class="drink-item"><span>🍊 Fanta</span> <span>7 RON</span></div>
+            <div class="drink-item"><span>🍋 Sprite</span> <span>7 RON</span></div>
+            <div class="drink-item"><span>💧 Apă Plată</span> <span>6 RON</span></div>
+            <div class="drink-item"><span>🫧 Apă Minerală</span> <span>6 RON</span></div>
+        </div>
+
+    </main>
+
+    <footer>
+        <h3>Sandwichef România</h3>
+        <p>Ingrediente proaspete, gust autentic.</p>
+        <p>© 2026 Toate drepturile rezervate.</p>
+    </footer>
+
+</body>
+</html>

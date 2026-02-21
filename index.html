@@ -9,7 +9,6 @@
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;800;900&family=Permanent+Marker&display=swap" rel="stylesheet">
     
     <style>
-        /* --- SETĂRI GENERALE ȘI VARIABILE --- */
         :root {
             --primary-color: #ff3e3e;
             --secondary-color: #2d3436;
@@ -20,7 +19,6 @@
             --shadow-hover: 0 15px 30px rgba(255, 62, 62, 0.15);
         }
 
-        /* --- SMOOTH SCROLL --- */
         html {
             scroll-behavior: smooth;
             scroll-padding-top: 90px;
@@ -41,7 +39,6 @@
             padding-top: 80px;
         }
 
-        /* --- NAVBAR CENTRAT --- */
         .navbar {
             position: fixed;
             top: 0;
@@ -88,9 +85,9 @@
             color: var(--primary-color);
         }
 
-        /* --- HERO SECTION --- */
+        /* AM SCOS "fixed" DE LA BACKGROUND AICI PENTRU A OPRI LAG-UL */
         header {
-            background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('sandvis-snitel-cartofi.jpeg') center/cover no-repeat fixed;
+            background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('sandvis-snitel-cartofi.jpeg') center/cover no-repeat;
             height: 75vh;
             display: flex;
             flex-direction: column;
@@ -148,7 +145,6 @@
             border-color: white;
         }
 
-        /* --- SECTIONS LAYOUT --- */
         .section-container {
             padding: 80px 20px;
         }
@@ -193,7 +189,6 @@
             border-radius: 2px;
         }
 
-        /* --- GRID PENTRU MENIU --- */
         .menu-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
@@ -210,6 +205,7 @@
             display: flex;
             flex-direction: column;
             border: 1px solid transparent;
+            will-change: transform; /* Optimizare pt scroll lin */
         }
 
         .menu-card:hover {
@@ -329,7 +325,6 @@
             color: var(--primary-color);
         }
 
-        /* --- STILURI SECȚIUNE DESPRE ȘI LIVRĂRI --- */
         .text-box {
             text-align: center;
             max-width: 800px;
@@ -365,7 +360,6 @@
             background-color: #e62e2e;
         }
 
-        /* --- CONTACT, HARTĂ ȘI RECENZII --- */
         .social-button {
             display: inline-flex;
             align-items: center;
@@ -453,7 +447,6 @@
             font-size: 1.2rem;
         }
 
-        /* --- FOOTER --- */
         footer {
             background: #111;
             color: white;
@@ -461,41 +454,14 @@
             padding: 40px 20px;
         }
 
-        /* =========================================
-           RESPONSIVE (AICI AM FĂCUT MENIUL "SLIM")
-           ========================================= */
         @media (max-width: 900px) {
-            body {
-                padding-top: 90px;
-            }
-            header {
-                margin-top: -90px;
-                height: 100vh; /* Se vede mai bine imaginea intreaga pe mobil */
-            }
-            .navbar {
-                flex-direction: row;
-                flex-wrap: wrap;
-                padding: 10px 5px;
-                justify-content: center;
-                gap: 5px 10px;
-            }
-            .nav-logo {
-                flex: 1 1 100%; /* Fortam logo-ul sa stea singur pe randul de sus */
-                text-align: center;
-                margin: 0;
-                font-size: 2.2rem;
-                order: -1; 
-            }
-            .nav-links {
-                gap: 12px;
-            }
-            .nav-links li a {
-                font-size: 0.75rem; /* Font putin mai mic ca sa intre toate cele 4 butoane in linie */
-                letter-spacing: 0.5px;
-            }
-            html {
-                scroll-padding-top: 100px;
-            }
+            body { padding-top: 90px; }
+            header { margin-top: -90px; height: 100vh; }
+            .navbar { flex-direction: row; flex-wrap: wrap; padding: 10px 5px; justify-content: center; gap: 5px 10px; }
+            .nav-logo { flex: 1 1 100%; text-align: center; margin: 0; font-size: 2.2rem; order: -1; }
+            .nav-links { gap: 12px; }
+            .nav-links li a { font-size: 0.75rem; letter-spacing: 0.5px; }
+            html { scroll-padding-top: 100px; }
             .header-content h1 { font-size: 3.5rem; margin-bottom: 20px;}
             .hero-tag { font-size: 1rem; }
             .category-title { font-size: 2.2rem; }
@@ -511,9 +477,7 @@
             <li><a href="#meniu">Meniu</a></li>
             <li><a href="#despre">Despre noi</a></li>
         </ul>
-        
         <a href="#acasa" class="nav-logo">Sandwichef</a>
-        
         <ul class="nav-links">
             <li><a href="#livrari">Livrări</a></li>
             <li><a href="#contact">Contact</a></li>
@@ -534,7 +498,7 @@
             <div class="menu-grid">
                 
                 <div class="menu-card">
-                    <div class="card-image"><img src="morning-bacon.jpeg" alt="Morning Sandwich Bacon"></div>
+                    <div class="card-image"><img src="morning-bacon.jpeg" alt="Morning Sandwich Bacon" loading="lazy"></div>
                     <div class="card-content">
                         <div class="card-header">
                             <div class="item-title"><span class="item-number">1.</span> Morning Sandwichef Bacon</div>
@@ -555,7 +519,7 @@
                 </div>
 
                 <div class="menu-card">
-                    <div class="card-image"><img src="bagheta-fresh.jpeg" alt="Bagheta Fresh"></div>
+                    <div class="card-image"><img src="bagheta-fresh.jpeg" alt="Bagheta Fresh" loading="lazy"></div>
                     <div class="card-content">
                         <div class="card-header">
                             <div class="item-title"><span class="item-number">2.</span> Bagheta Fresh</div>
@@ -574,7 +538,7 @@
                 </div>
 
                 <div class="menu-card">
-                    <div class="card-image"><img src="panini-pollo.jpeg" alt="Sandwich cu Șnițel" style="filter: grayscale(10%);"></div>
+                    <div class="card-image"><img src="panini-pollo.jpeg" alt="Sandwich cu Șnițel" style="filter: grayscale(10%);" loading="lazy"></div>
                     <div class="card-content">
                         <div class="card-header">
                             <div class="item-title"><span class="item-number">3.</span> Sandwich cu Șnițel</div>
@@ -592,7 +556,7 @@
                 </div>
 
                 <div class="menu-card">
-                    <div class="card-image"><img src="wrap-crispy.jpeg" alt="Wrap Crispy"></div>
+                    <div class="card-image"><img src="wrap-crispy.jpeg" alt="Wrap Crispy" loading="lazy"></div>
                     <div class="card-content">
                         <div class="card-header">
                             <div class="item-title"><span class="item-number">4.</span> Wrap Crispy</div>
@@ -610,7 +574,7 @@
                 </div>
 
                 <div class="menu-card">
-                    <div class="card-image"><img src="bagheta-salam.jpeg" alt="Sandwich Salam Picant"></div>
+                    <div class="card-image"><img src="bagheta-salam.jpeg" alt="Sandwich Salam Picant" loading="lazy"></div>
                     <div class="card-content">
                         <div class="card-header">
                             <div class="item-title"><span class="item-number">5.</span> Sandwich cu Salam Picant</div>
@@ -630,7 +594,7 @@
                 </div>
 
                 <div class="menu-card">
-                    <div class="card-image"><img src="bagheta-salam.jpeg" alt="Sandwich Bacon" style="filter: hue-rotate(15deg);"></div>
+                    <div class="card-image"><img src="bagheta-salam.jpeg" alt="Sandwich Bacon" style="filter: hue-rotate(15deg);" loading="lazy"></div>
                     <div class="card-content">
                         <div class="card-header">
                             <div class="item-title"><span class="item-number">6.</span> Sandwich cu Bacon</div>
@@ -650,7 +614,7 @@
                 </div>
 
                 <div class="menu-card">
-                    <div class="card-image"><img src="smashed-vita.jpeg" alt="Smashed Sandwich Vita"></div>
+                    <div class="card-image"><img src="smashed-vita.jpeg" alt="Smashed Sandwich Vita" loading="lazy"></div>
                     <div class="card-content">
                         <div class="card-header">
                             <div class="item-title"><span class="item-number">7.</span> Smashed Sandwich Vita</div>
@@ -672,7 +636,7 @@
             <h2 class="category-title" style="margin-top: 40px;">Panini Gourmet</h2>
             <div class="menu-grid">
                 <div class="menu-card">
-                    <div class="card-image"><img src="panini-pollo.jpeg" alt="Panini Pollo"></div>
+                    <div class="card-image"><img src="panini-pollo.jpeg" alt="Panini Pollo" loading="lazy"></div>
                     <div class="card-content">
                         <div class="card-header">
                             <div class="item-title"><span class="item-number">8.</span> Panini Pollo</div>
@@ -692,7 +656,7 @@
                 </div>
 
                 <div class="menu-card">
-                    <div class="card-image"><img src="sandvis-snitel-cartofi.jpeg" alt="Panini Pofta Mare Frate"></div>
+                    <div class="card-image"><img src="sandvis-snitel-cartofi.jpeg" alt="Panini Pofta Mare Frate" loading="lazy"></div>
                     <div class="card-content">
                         <div class="card-header">
                             <div class="item-title"><span class="item-number">9.</span> Panini Pofta Mare, Frate</div>
@@ -712,7 +676,7 @@
                 </div>
 
                 <div class="menu-card">
-                    <div class="card-image"><img src="panini-mortadella.jpeg" alt="Panini Mamamia"></div>
+                    <div class="card-image"><img src="panini-mortadella.jpeg" alt="Panini Mamamia" loading="lazy"></div>
                     <div class="card-content">
                         <div class="card-header">
                             <div class="item-title"><span class="item-number">10.</span> Panini Mamamia</div>
@@ -732,7 +696,7 @@
                 </div>
 
                 <div class="menu-card">
-                    <div class="card-image"><img src="panini-picant.jpeg" alt="Panini Picante"></div>
+                    <div class="card-image"><img src="panini-picant.jpeg" alt="Panini Picante" loading="lazy"></div>
                     <div class="card-content">
                         <div class="card-header">
                             <div class="item-title"><span class="item-number">11.</span> Panini Picante</div>
@@ -751,7 +715,7 @@
                 </div>
 
                 <div class="menu-card">
-                    <div class="card-image"><img src="panini-pollo.jpeg" alt="Panini Primavera" style="transform: scaleX(-1);"></div>
+                    <div class="card-image"><img src="panini-pollo.jpeg" alt="Panini Primavera" style="transform: scaleX(-1);" loading="lazy"></div>
                     <div class="card-content">
                         <div class="card-header">
                             <div class="item-title"><span class="item-number">12.</span> Panini Primavera</div>
@@ -772,7 +736,7 @@
                 </div>
 
                 <div class="menu-card">
-                    <div class="card-image"><img src="panini-picant.jpeg" alt="Panini Napoli" style="filter: sepia(20%);"></div>
+                    <div class="card-image"><img src="panini-picant.jpeg" alt="Panini Napoli" style="filter: sepia(20%);" loading="lazy"></div>
                     <div class="card-content">
                         <div class="card-header">
                             <div class="item-title"><span class="item-number">13.</span> Panini Napoli</div>
@@ -795,7 +759,7 @@
             <h2 class="category-title" style="margin-top: 40px;">Extra & Răcoritoare</h2>
             <div class="menu-grid" style="justify-content: center;">
                 <div class="menu-card" style="max-width: 400px; margin: auto;">
-                    <div class="card-image" style="height: 250px;"><img src="cartofi-prajiti.jpeg" alt="Cartofi Prajiti"></div>
+                    <div class="card-image" style="height: 250px;"><img src="cartofi-prajiti.jpeg" alt="Cartofi Prajiti" loading="lazy"></div>
                     <div class="card-content">
                         <div class="card-header">
                             <div class="item-title"><span class="item-number">14.</span> Cartofi Prăjiți</div>
@@ -819,7 +783,6 @@
             </div>
         </div>
     </section>
-
     <section id="despre" class="section-container section-dark">
         <div class="content-wrapper text-box">
             <h2 class="category-title">Cine suntem?</h2>

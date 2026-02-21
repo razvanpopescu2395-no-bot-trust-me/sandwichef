@@ -23,7 +23,7 @@
         /* --- SMOOTH SCROLL --- */
         html {
             scroll-behavior: smooth;
-            scroll-padding-top: 80px; /* Ajustează pe unde se oprește scroll-ul ca să nu acopere navbar-ul */
+            scroll-padding-top: 90px;
         }
 
         * {
@@ -38,10 +38,10 @@
             color: var(--text-color);
             line-height: 1.6;
             overflow-x: hidden;
-            padding-top: 70px; /* Spațiu pentru Navbar */
+            padding-top: 80px;
         }
 
-        /* --- NAVBAR (MENIUL DE SUS FIX) --- */
+        /* --- NAVBAR CENTRAT (STIL ZMOKE) --- */
         .navbar {
             position: fixed;
             top: 0;
@@ -51,24 +51,27 @@
             box-shadow: 0 2px 15px rgba(0,0,0,0.1);
             z-index: 1000;
             display: flex;
-            justify-content: space-between;
+            justify-content: center;
             align-items: center;
-            padding: 15px 50px;
+            padding: 15px 20px;
             transition: all 0.3s ease;
-        }
-
-        .nav-logo {
-            font-family: 'Permanent Marker', cursive;
-            font-size: 2rem;
-            color: var(--primary-color);
-            text-decoration: none;
-            transform: rotate(-2deg);
         }
 
         .nav-links {
             list-style: none;
             display: flex;
             gap: 30px;
+            margin: 0;
+            padding: 0;
+        }
+
+        .nav-logo {
+            font-family: 'Permanent Marker', cursive;
+            font-size: 2.8rem;
+            color: var(--primary-color);
+            text-decoration: none;
+            margin: 0 60px; /* Spațiu mare în stânga și dreapta logo-ului */
+            transform: rotate(-2deg);
         }
 
         .nav-links li a {
@@ -85,10 +88,10 @@
             color: var(--primary-color);
         }
 
-        /* --- HERO SECTION --- */
+        /* --- HERO SECTION CENTRATĂ (STIL ZMOKE) --- */
         header {
-            background: linear-gradient(rgba(45, 52, 54, 0.8), rgba(45, 52, 54, 0.8)), url('sandvis-snitel-cartofi.jpeg') center/cover no-repeat fixed;
-            height: 70vh;
+            background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('sandvis-snitel-cartofi.jpeg') center/cover no-repeat fixed;
+            height: 75vh;
             display: flex;
             flex-direction: column;
             justify-content: center;
@@ -96,23 +99,53 @@
             text-align: center;
             color: white;
             position: relative;
-            margin-top: -70px; /* Compensează padding-ul din body pentru hero */
+            margin-top: -80px;
+        }
+
+        .header-content {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .hero-tag {
+            background-color: white;
+            color: black;
+            padding: 8px 25px;
+            font-weight: 900;
+            font-size: 1.2rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-bottom: 20px;
         }
 
         .header-content h1 {
             font-family: 'Permanent Marker', cursive;
-            font-size: 5rem;
+            font-size: 5.5rem;
             color: var(--primary-color);
-            text-shadow: 2px 2px 10px rgba(0,0,0,0.5);
-            transform: rotate(-3deg);
-            margin-bottom: 10px;
+            text-shadow: 4px 4px 15px rgba(0,0,0,0.8);
+            line-height: 1.1;
+            margin-bottom: 30px;
+            letter-spacing: 2px;
         }
 
-        .header-content h2 {
-            font-weight: 900;
+        .hero-btn {
+            background-color: black;
+            color: white;
+            padding: 12px 30px;
+            font-weight: 800;
             text-transform: uppercase;
-            letter-spacing: 3px;
-            font-size: 2rem;
+            text-decoration: none;
+            font-size: 1rem;
+            letter-spacing: 1px;
+            border: 2px solid transparent;
+            transition: all 0.3s ease;
+        }
+
+        .hero-btn:hover {
+            background-color: var(--primary-color);
+            border-color: white;
         }
 
         /* --- SECTIONS LAYOUT --- */
@@ -347,6 +380,7 @@
             font-size: 1.2rem;
             transition: all 0.3s ease;
             box-shadow: 0 5px 15px rgba(24, 119, 242, 0.3);
+            margin: 30px auto 50px auto;
         }
 
         .social-button:hover {
@@ -362,6 +396,10 @@
             box-shadow: var(--shadow-soft);
             margin-bottom: 60px;
             border: 4px solid white;
+            background-color: #eee;
+            display: flex;
+            align-items: center;
+            justify-content: center;
         }
 
         .reviews-grid {
@@ -378,6 +416,7 @@
             box-shadow: var(--shadow-soft);
             text-align: left;
             position: relative;
+            color: var(--text-color);
         }
 
         .review-stars {
@@ -389,7 +428,6 @@
 
         .review-text {
             font-style: italic;
-            color: var(--text-color);
             margin-bottom: 20px;
             line-height: 1.7;
         }
@@ -417,29 +455,34 @@
 
         /* --- FOOTER --- */
         footer {
-            background: #1a1a1a;
+            background: #111;
             color: white;
             text-align: center;
             padding: 40px 20px;
         }
 
         /* --- RESPONSIVE --- */
-        @media (max-width: 768px) {
+        @media (max-width: 900px) {
             .navbar {
                 flex-direction: column;
-                padding: 15px 20px;
+                padding: 15px;
+                gap: 15px;
+            }
+            .nav-logo {
+                margin: 5px 0;
+                font-size: 2.2rem;
+                order: -1; /* Pune logo-ul primul sus pe telefon */
             }
             .nav-links {
-                margin-top: 15px;
                 gap: 15px;
                 flex-wrap: wrap;
                 justify-content: center;
             }
             html {
-                scroll-padding-top: 130px; /* Offset mai mare pe mobil pentru că meniul e mai înalt */
+                scroll-padding-top: 150px;
             }
             .header-content h1 { font-size: 3.5rem; }
-            .header-content h2 { font-size: 1.5rem; }
+            .hero-tag { font-size: 1rem; }
             .category-title { font-size: 2.2rem; }
             .menu-grid { grid-template-columns: 1fr; }
             .map-container { height: 300px; }
@@ -449,10 +492,14 @@
 <body>
 
     <nav class="navbar">
-        <a href="#acasa" class="nav-logo">Sandwichef</a>
         <ul class="nav-links">
             <li><a href="#meniu">Meniu</a></li>
             <li><a href="#despre">Despre noi</a></li>
+        </ul>
+        
+        <a href="#acasa" class="nav-logo">Sandwichef</a>
+        
+        <ul class="nav-links">
             <li><a href="#livrari">Livrări</a></li>
             <li><a href="#contact">Contact</a></li>
         </ul>
@@ -460,8 +507,9 @@
 
     <header id="acasa">
         <div class="header-content">
-            <h1>Sandwichef</h1>
-            <h2>Gustul Urban Desăvârșit</h2>
+            <div class="hero-tag">BINE AȚI VENIT!</div>
+            <h1>MEET THE<br>TASTE!</h1>
+            <a href="#meniu" class="hero-btn">— Răsfoiește Meniul —</a>
         </div>
     </header>
 
@@ -469,6 +517,7 @@
         <div class="content-wrapper">
             <h2 class="category-title">Sandwichef Collection</h2>
             <div class="menu-grid">
+                
                 <div class="menu-card">
                     <div class="card-image"><img src="morning-bacon.jpeg" alt="Morning Sandwich Bacon"></div>
                     <div class="card-content">
@@ -777,17 +826,15 @@
 
     <section id="contact" class="section-container section-dark" style="text-align: center;">
         <div class="content-wrapper">
-            <h2 class="category-title">Vino să ne vizitezi!</h2>
+            <h2 class="category-title" style="display: block; margin-bottom: 20px;">Vino să ne vizitezi!</h2>
             
-            <div style="margin-bottom: 50px;">
-                <a href="https://www.facebook.com/people/Sandwichef/61552030004351/" target="_blank" class="social-button">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="currentColor"><path d="M9 8h-3v4h3v12h5v-12h3.642l.358-4h-4v-1.667c0-.955.192-1.333 1.115-1.333h2.885v-5h-3.808c-3.596 0-5.192 1.583-5.192 4.615v3.385z"/></svg>
-                    Urmărește-ne pe Facebook
-                </a>
-            </div>
+            <a href="https://www.facebook.com/people/Sandwichef/61552030004351/" target="_blank" class="social-button">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="currentColor"><path d="M9 8h-3v4h3v12h5v-12h3.642l.358-4h-4v-1.667c0-.955.192-1.333 1.115-1.333h2.885v-5h-3.808c-3.596 0-5.192 1.583-5.192 4.615v3.385z"/></svg>
+                Urmărește-ne pe Facebook
+            </a>
 
             <div class="map-container">
-                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d182276.10864326966!2d25.965682898086036!3d44.43798533816999!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x40b1f93abf3cad4f%3A0xac0632e37c9ca628!2sBucure%C5%9Fti!5e0!3m2!1sro!2sro!4v1708447816823!5m2!1sro!2sro" width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2854.1385852714616!2d23.78951687756116!3d44.327656571078236!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x4752d700794a292d%3A0xeae5efd854a9e4a4!2sSandwichef!5e0!3m2!1sen!2sro!4v1771606955277!5m2!1sen!2sro" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
             </div>
 
             <h3 style="font-family: 'Permanent Marker', cursive; font-size: 2.2rem; margin-top: 50px; color: var(--primary-color);">Ce spun clienții noștri</h3>

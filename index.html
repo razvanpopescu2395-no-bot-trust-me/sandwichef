@@ -41,7 +41,7 @@
             padding-top: 80px;
         }
 
-        /* --- NAVBAR CENTRAT (STIL ZMOKE) --- */
+        /* --- NAVBAR CENTRAT --- */
         .navbar {
             position: fixed;
             top: 0;
@@ -70,7 +70,7 @@
             font-size: 2.8rem;
             color: var(--primary-color);
             text-decoration: none;
-            margin: 0 60px; /* Spațiu mare în stânga și dreapta logo-ului */
+            margin: 0 60px;
             transform: rotate(-2deg);
         }
 
@@ -88,7 +88,7 @@
             color: var(--primary-color);
         }
 
-        /* --- HERO SECTION CENTRATĂ (STIL ZMOKE) --- */
+        /* --- HERO SECTION --- */
         header {
             background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('sandvis-snitel-cartofi.jpeg') center/cover no-repeat fixed;
             height: 75vh;
@@ -461,27 +461,42 @@
             padding: 40px 20px;
         }
 
-        /* --- RESPONSIVE --- */
+        /* =========================================
+           RESPONSIVE (AICI AM FĂCUT MENIUL "SLIM")
+           ========================================= */
         @media (max-width: 900px) {
+            body {
+                padding-top: 90px;
+            }
+            header {
+                margin-top: -90px;
+                height: 100vh; /* Se vede mai bine imaginea intreaga pe mobil */
+            }
             .navbar {
-                flex-direction: column;
-                padding: 15px;
-                gap: 15px;
+                flex-direction: row;
+                flex-wrap: wrap;
+                padding: 10px 5px;
+                justify-content: center;
+                gap: 5px 10px;
             }
             .nav-logo {
-                margin: 5px 0;
+                flex: 1 1 100%; /* Fortam logo-ul sa stea singur pe randul de sus */
+                text-align: center;
+                margin: 0;
                 font-size: 2.2rem;
-                order: -1; /* Pune logo-ul primul sus pe telefon */
+                order: -1; 
             }
             .nav-links {
-                gap: 15px;
-                flex-wrap: wrap;
-                justify-content: center;
+                gap: 12px;
+            }
+            .nav-links li a {
+                font-size: 0.75rem; /* Font putin mai mic ca sa intre toate cele 4 butoane in linie */
+                letter-spacing: 0.5px;
             }
             html {
-                scroll-padding-top: 150px;
+                scroll-padding-top: 100px;
             }
-            .header-content h1 { font-size: 3.5rem; }
+            .header-content h1 { font-size: 3.5rem; margin-bottom: 20px;}
             .hero-tag { font-size: 1rem; }
             .category-title { font-size: 2.2rem; }
             .menu-grid { grid-template-columns: 1fr; }

@@ -11,7 +11,7 @@
     <link rel="icon" type="image/png" href="logo.png">
     
     <style>
-        /* --- SETĂRI GENERALE ȘI VARIABILE --- */
+        /* --- SETARI GENERALE SI VARIABILE --- */
         :root {
             --primary-color: #ff3e3e;
             --secondary-color: #2d3436;
@@ -40,23 +40,27 @@
             color: var(--text-color);
             line-height: 1.6;
             overflow-x: hidden;
-            padding-top: 80px;
         }
 
-        /* --- NAVBAR CENTRAT --- */
+        /* --- NAVBAR (Transparent initial, devine alb la scroll) --- */
         .navbar {
             position: fixed;
             top: 0;
             left: 0;
             width: 100%;
-            background-color: rgba(255, 255, 255, 0.98);
-            box-shadow: 0 2px 15px rgba(0,0,0,0.1);
+            background-color: transparent; /* Initial transparent */
             z-index: 1000;
             display: flex;
             justify-content: center;
             align-items: center;
-            padding: 15px 20px;
-            transition: all 0.3s ease;
+            padding: 25px 20px;
+            transition: all 0.4s ease; /* Tranzitie lina la scroll */
+        }
+
+        .navbar.scrolled {
+            background-color: rgba(255, 255, 255, 0.98);
+            box-shadow: 0 2px 15px rgba(0,0,0,0.1);
+            padding: 12px 20px;
         }
 
         .nav-links {
@@ -67,24 +71,46 @@
             padding: 0;
         }
 
+        .nav-logo {
+            font-family: 'Permanent Marker', cursive;
+            font-size: 2.8rem;
+            color: #fff; /* Alb initial pt vizibilitate pe poza */
+            text-decoration: none;
+            margin: 0 60px;
+            transform: rotate(-2deg);
+            transition: color 0.3s ease;
+            text-shadow: 2px 2px 10px rgba(0,0,0,0.4);
+        }
+
+        .navbar.scrolled .nav-logo {
+            color: var(--primary-color);
+            text-shadow: none;
+        }
+
         .nav-links li a {
             text-decoration: none;
-            color: var(--secondary-color);
+            color: #fff; /* Alb initial */
             font-weight: 800;
             text-transform: uppercase;
             font-size: 0.95rem;
             letter-spacing: 1px;
             transition: color 0.3s ease;
+            text-shadow: 1px 1px 5px rgba(0,0,0,0.5);
         }
 
-        .nav-links li a:hover {
+        .navbar.scrolled .nav-links li a {
+            color: var(--secondary-color);
+            text-shadow: none;
+        }
+
+        .navbar.scrolled .nav-links li a:hover {
             color: var(--primary-color);
         }
 
         /* --- HERO SECTION --- */
         header {
             background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('sandvis-snitel-cartofi.jpeg') center/cover no-repeat;
-            height: 75vh;
+            height: 100vh;
             display: flex;
             flex-direction: column;
             justify-content: center;
@@ -92,7 +118,6 @@
             text-align: center;
             color: white;
             position: relative;
-            margin-top: -80px;
         }
 
         .header-content {
@@ -100,7 +125,7 @@
             flex-direction: column;
             align-items: center;
             justify-content: center;
-            position: relative; /* important */
+            position: relative;
         }
 
         .hero-tag {
@@ -114,51 +139,47 @@
             margin-bottom: 20px;
         }
 
-        /* === STILURI NOI PENTRU LOGO-UL CENTRAL ȘI TEXTUL CURBAT === */
+        /* === LOGO CENTRAL SI CERC ALB MIC === */
         .logo-hero-container {
             position: relative;
             display: flex;
             justify-content: center;
             align-items: center;
-            width: 350px; /* Dimensiunea fundalului circular */
-            height: 350px;
+            width: 140px; /* Cerc mult mai mic */
+            height: 140px;
             border-radius: 50%;
-            background-color: rgba(255, 255, 255, 0.7); /* Alb semi-transparent */
-            margin: 20px auto;
+            background-color: rgba(255, 255, 255, 0.85); /* Fundalul alb restrans */
+            margin: 70px auto 60px auto;
             box-shadow: 0 4px 15px rgba(0,0,0,0.3);
-            overflow: visible; /* pentru ca textul curbat să iasă din caseta SVG */
+            overflow: visible;
         }
 
-        /* SVG-ul pentru text curbat, poziționat absolut pentru a overlay-a imaginea */
         .curved-text-svg {
             position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            z-index: 2; /* plasează textul deasupra imaginii logo-ului */
-        }
-
-        /* Stilul pentru textul curbat propriu-zis */
-        .curved-text {
-            fill: var(--primary-color); /* Roșu din variabilele site-ului */
-            font-family: 'Permanent Marker', cursive; /* Același font ca în meniu */
-            font-size: 32px;
-            font-weight: bold;
-            text-transform: uppercase;
-            letter-spacing: 1px;
+            top: -70px;
+            left: -80px;
+            width: 300px;
+            height: 300px;
             z-index: 2;
         }
 
-        /* Imaginea logo-ului în centrul emblemei, poziționată sub textul curbat */
+        .curved-text {
+            fill: var(--primary-color);
+            font-family: 'Permanent Marker', cursive;
+            font-size: 28px;
+            font-weight: bold;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
         .hero-logo-img {
-            max-width: 65%; /* logo-ul propriu-zis mai mic decât fundalul circular */
-            max-height: 65%;
+            width: 250px; /* Logo-ul depaseste mult cercul alb */
             position: absolute;
-            top: 55%; /* poziționat vizual mai jos pentru a nu se suprapune cu arcul textului */
+            top: 45%;
             left: 50%;
             transform: translate(-50%, -50%);
-            z-index: 1; /* plasează imaginea sub arcul textului, dar pe margini */
+            z-index: 3; /* Deasupra cercului alb */
+            filter: drop-shadow(0px 10px 15px rgba(0,0,0,0.4)); /* Umbra pe personaj pt 3D effect */
         }
 
         .hero-btn {
@@ -172,7 +193,7 @@
             letter-spacing: 1px;
             border: 2px solid transparent;
             transition: all 0.3s ease;
-            margin-top: 20px; /* Spațiu între emblema logo-ului și buton */
+            margin-top: 10px;
         }
 
         .hero-btn:hover {
@@ -199,16 +220,14 @@
             margin: 0 auto;
         }
 
+        /* --- CENTRARE PERFECTA TITLURI CATEGORII --- */
         .category-title {
             text-align: center;
             font-family: 'Permanent Marker', cursive;
             font-size: 3rem;
             color: var(--secondary-color);
-            margin: 0 0 50px 0;
-            position: relative;
-            display: inline-block;
-            left: 50%;
-            transform: translateX(-50%);
+            margin: 0 auto 50px auto;
+            display: block; /* Modificat pentru a asigura centrarea corecta a liniei de sub el */
         }
 
         .section-dark .category-title {
@@ -218,7 +237,7 @@
         .category-title::after {
             content: '';
             display: block;
-            width: 60%;
+            width: 120px; /* Linie fixa, centrata clar */
             height: 4px;
             background: var(--primary-color);
             margin: 10px auto 0 auto;
@@ -242,7 +261,7 @@
             display: flex;
             flex-direction: column;
             border: 1px solid transparent;
-            will-change: transform; /* Optimizare pentru scroll lin */
+            will-change: transform;
         }
 
         .menu-card:hover {
@@ -362,7 +381,7 @@
             color: var(--primary-color);
         }
 
-        /* --- STILURI SECȚIUNE DESPRE ȘI LIVRĂRI --- */
+        /* --- STILURI SECȚIUNE DESPRE SI LIVRARI --- */
         .text-box {
             text-align: center;
             max-width: 800px;
@@ -390,6 +409,9 @@
             text-transform: uppercase;
             transition: all 0.3s ease;
             box-shadow: 0 5px 15px rgba(255, 62, 62, 0.4);
+            display: flex;
+            align-items: center;
+            gap: 10px;
         }
 
         .btn-delivery:hover {
@@ -398,28 +420,59 @@
             background-color: #e62e2e;
         }
 
+        /* Butonul Bolt Food cu culoarea specifica verde */
+        .btn-bolt {
+            background-color: #32BB78;
+            box-shadow: 0 5px 15px rgba(50, 187, 120, 0.4);
+        }
+
+        .btn-bolt:hover {
+            background-color: #29a065;
+            box-shadow: 0 10px 25px rgba(50, 187, 120, 0.6);
+        }
+
         /* === CONTACT, HARTĂ ȘI RECENZII === */
-        /* Corecție suprapunere Facebook: asigură layout-ul pe rânduri distincte și o poziționare centrală stabilă */
+        .social-buttons-container {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin: 30px auto 50px auto;
+            flex-wrap: wrap;
+        }
+
         .social-button {
             display: inline-flex;
             align-items: center;
             justify-content: center;
-            gap: 10px;
-            background-color: #1877F2;
+            gap: 8px;
             color: white;
-            padding: 15px 30px;
+            padding: 12px 25px;
             border-radius: 50px;
             text-decoration: none;
             font-weight: 800;
-            font-size: 1.2rem;
+            font-size: 1rem;
             transition: all 0.3s ease;
-            box-shadow: 0 5px 15px rgba(24, 119, 242, 0.3);
-            margin: 30px auto 50px auto; /* poziționare centrală și spațiu generos sub el */
         }
 
         .social-button:hover {
             transform: translateY(-5px);
-            box-shadow: 0 10px 25px rgba(24, 119, 242, 0.5);
+        }
+
+        .btn-facebook {
+            background-color: #1877F2;
+            box-shadow: 0 5px 15px rgba(24, 119, 242, 0.3);
+        }
+        
+        .btn-instagram {
+            /* Gradient de Instagram */
+            background: linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%);
+            box-shadow: 0 5px 15px rgba(220, 39, 67, 0.3);
+        }
+
+        .btn-tiktok {
+            background-color: #000000;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+            border: 1px solid #333;
         }
 
         .map-container {
@@ -487,7 +540,6 @@
             font-size: 1.2rem;
         }
 
-        /* --- FOOTER --- */
         footer {
             background: #111;
             color: white;
@@ -497,18 +549,32 @@
 
         /* --- RESPONSIVE --- */
         @media (max-width: 900px) {
-            body { padding-top: 90px; }
-            header { margin-top: -90px; height: 100vh; }
-            .navbar { flex-direction: row; flex-wrap: wrap; padding: 10px 5px; justify-content: center; gap: 5px 10px; }
-            .nav-logo { flex: 1 1 100%; text-align: center; margin: 0; font-size: 2.2rem; order: -1; }
+            .navbar {
+                flex-direction: row;
+                flex-wrap: wrap;
+                padding: 10px 5px;
+                justify-content: center;
+                gap: 5px 10px;
+            }
+            .navbar.scrolled {
+                padding: 10px 5px;
+            }
+            .nav-logo {
+                flex: 1 1 100%;
+                text-align: center;
+                margin: 0;
+                font-size: 2.2rem;
+                order: -1; 
+            }
             .nav-links { gap: 12px; }
             .nav-links li a { font-size: 0.75rem; letter-spacing: 0.5px; }
-            html { scroll-padding-top: 100px; }
-            .header-content h1 { font-size: 3.5rem; margin-bottom: 20px;}
-            .hero-tag { font-size: 1rem; }
+            
+            .logo-hero-container { transform: scale(0.85); margin: 30px auto; }
             .category-title { font-size: 2.2rem; }
             .menu-grid { grid-template-columns: 1fr; }
             .map-container { height: 300px; }
+            .social-buttons-container { flex-direction: column; align-items: center; }
+            .social-button { width: 80%; }
         }
     </style>
 </head>
@@ -519,34 +585,30 @@
             <li><a href="#meniu">Meniu</a></li>
             <li><a href="#despre">Despre noi</a></li>
         </ul>
-        
         <a href="#acasa" class="nav-logo">Sandwichef</a>
-        
         <ul class="nav-links">
-            <li><a href="#livrari">Livrări</a></li>
+            <li><a href="#livrari">Livrari</a></li>
             <li><a href="#contact">Contact</a></li>
         </ul>
     </nav>
 
     <header id="acasa">
         <div class="header-content">
-            <div class="hero-tag">BINE AȚI VENIT!</div>
+            <div class="hero-tag">BINE ATI VENIT!</div>
             
             <div class="logo-hero-container">
-                
-                <svg viewBox="0 0 350 350" class="curved-text-svg">
-                  <path id="curve" d="M 35, 175 a 140,140 0 0,1 280,0" fill="transparent"/>
+                <svg viewBox="0 0 300 300" class="curved-text-svg">
+                  <path id="curve" d="M 35, 140 a 115,115 0 0,1 230,0" fill="transparent"/>
                   <text class="curved-text">
                     <textPath xlink:href="#curve" startOffset="50%" text-anchor="middle">
                       chef de sandwich
                     </textPath>
                   </text>
                 </svg>
-                
                 <img src="logo.png" alt="Chef de Sandwich Logo" class="hero-logo-img">
             </div>
             
-            <a href="#meniu" class="hero-btn">— Răsfoiește Meniul —</a>
+            <a href="#meniu" class="hero-btn">— Rasfoieste Meniul —</a>
         </div>
     </header>
 
@@ -564,13 +626,13 @@
                         </div>
                         <div class="item-details">260 G</div>
                         <ul class="item-ingredients-list">
-                            <li><span class="emoji">🥖</span> Chiflă 80g</li>
+                            <li><span class="emoji">🥖</span> Chifla 80g</li>
                             <li><span class="emoji">🥚</span> Ou 60g</li>
-                            <li><span class="emoji">🍅</span> Roșii 40g</li>
+                            <li><span class="emoji">🍅</span> Rosii 40g</li>
                             <li><span class="emoji">🥓</span> Bacon 40g</li>
                             <li><span class="emoji">🧀</span> Cheddar 20g</li>
                             <li><span class="emoji">🥬</span> Rucola 13g</li>
-                            <li><span class="emoji">🫒</span> Ulei măsline 5g</li>
+                            <li><span class="emoji">🫒</span> Ulei masline 5g</li>
                             <li><span class="emoji">🧂</span> Sare 2g</li>
                         </ul>
                     </div>
@@ -585,30 +647,30 @@
                         </div>
                         <div class="item-details">360 G</div>
                         <ul class="item-ingredients-list">
-                            <li><span class="emoji">🥖</span> Baghetă 160g</li>
-                            <li><span class="emoji">🧀</span> Cremă brânză 65g</li>
-                            <li><span class="emoji">🍅</span> Roșii 60g</li>
-                            <li><span class="emoji">🍗</span> Șuncă pui 40g</li>
-                            <li><span class="emoji">🧀</span> Brânză topită 30g</li>
+                            <li><span class="emoji">🥖</span> Bagheta 160g</li>
+                            <li><span class="emoji">🧀</span> Crema branza 65g</li>
+                            <li><span class="emoji">🍅</span> Rosii 60g</li>
+                            <li><span class="emoji">🍗</span> Sunca pui 40g</li>
+                            <li><span class="emoji">🧀</span> Branza topita 30g</li>
                             <li><span class="emoji">🥬</span> Baby spanac 15g</li>
                         </ul>
                     </div>
                 </div>
 
                 <div class="menu-card">
-                    <div class="card-image"><img src="link_imagine" alt="Sandwich cu Șnițel" style="filter: grayscale(10%);" loading="lazy"></div>
+                    <div class="card-image"><img src="panini-pollo.jpeg" alt="Sandwich cu Snitel" style="filter: grayscale(10%);" loading="lazy"></div>
                     <div class="card-content">
                         <div class="card-header">
-                            <div class="item-title"><span class="item-number">3.</span> Sandwich cu Șnițel</div>
+                            <div class="item-title"><span class="item-number">3.</span> Sandwich cu Snitel</div>
                             <div class="item-price">20 RON</div>
                         </div>
                         <div class="item-details">250 G</div>
                         <ul class="item-ingredients-list">
-                            <li><span class="emoji">🥖</span> Chiflă 80g</li>
-                            <li><span class="emoji">🍗</span> Șnițel pui 75g</li>
+                            <li><span class="emoji">🥖</span> Chifla 80g</li>
+                            <li><span class="emoji">🍗</span> Snitel pui 75g</li>
                             <li><span class="emoji">🥣</span> Sosul casei 40g</li>
-                            <li><span class="emoji">🍅</span> Roșii 40g</li>
-                            <li><span class="emoji">🥗</span> Salată iceberg 15g</li>
+                            <li><span class="emoji">🍅</span> Rosii 40g</li>
+                            <li><span class="emoji">🥗</span> Salata iceberg 15g</li>
                         </ul>
                     </div>
                 </div>
@@ -624,15 +686,15 @@
                         <ul class="item-ingredients-list">
                             <li><span class="emoji">🍗</span> Pui crispy 100g</li>
                             <li><span class="emoji">🫓</span> Tortilla 90g</li>
-                            <li><span class="emoji">🍅</span> Roșii 70g</li>
+                            <li><span class="emoji">🍅</span> Rosii 70g</li>
                             <li><span class="emoji">🥣</span> Sosul casei 40g</li>
-                            <li><span class="emoji">🥗</span> Salată iceberg 30g</li>
+                            <li><span class="emoji">🥗</span> Salata iceberg 30g</li>
                         </ul>
                     </div>
                 </div>
 
                 <div class="menu-card">
-                    <div class="card-image"><img src="link_imagine" alt="Sandwich Salam Picant" loading="lazy"></div>
+                    <div class="card-image"><img src="bagheta-salam.jpeg" alt="Sandwich Salam Picant" loading="lazy"></div>
                     <div class="card-content">
                         <div class="card-header">
                             <div class="item-title"><span class="item-number">5.</span> Sandwich cu Salam Picant</div>
@@ -640,19 +702,19 @@
                         </div>
                         <div class="item-details">300 G</div>
                         <ul class="item-ingredients-list">
-                            <li><span class="emoji">🥖</span> Baghetă 160g</li>
+                            <li><span class="emoji">🥖</span> Bagheta 160g</li>
                             <li><span class="emoji">🥓</span> Salam picant 35g</li>
                             <li><span class="emoji">🥓</span> Salam chorizo 35g</li>
-                            <li><span class="emoji">🧀</span> Brânză topită 35g</li>
-                            <li><span class="emoji">🥗</span> Salată asortată 25g</li>
-                            <li><span class="emoji">🫒</span> Ulei măsline 5g</li>
+                            <li><span class="emoji">🧀</span> Branza topita 35g</li>
+                            <li><span class="emoji">🥗</span> Salata asortata 25g</li>
+                            <li><span class="emoji">🫒</span> Ulei masline 5g</li>
                             <li><span class="emoji">🌶️</span> Fulgi chili 5g</li>
                         </ul>
                     </div>
                 </div>
 
                 <div class="menu-card">
-                    <div class="card-image"><img src="link_imagine" alt="Sandwich Bacon" style="filter: hue-rotate(15deg);" loading="lazy"></div>
+                    <div class="card-image"><img src="bagheta-salam.jpeg" alt="Sandwich Bacon" style="filter: hue-rotate(15deg);" loading="lazy"></div>
                     <div class="card-content">
                         <div class="card-header">
                             <div class="item-title"><span class="item-number">6.</span> Sandwich cu Bacon</div>
@@ -660,19 +722,19 @@
                         </div>
                         <div class="item-details">390 G</div>
                         <ul class="item-ingredients-list">
-                            <li><span class="emoji">🥖</span> Baghetă 160g</li>
+                            <li><span class="emoji">🥖</span> Bagheta 160g</li>
                             <li><span class="emoji">🥓</span> Bacon 80g</li>
-                            <li><span class="emoji">🍅</span> Roșii 40g</li>
+                            <li><span class="emoji">🍅</span> Rosii 40g</li>
                             <li><span class="emoji">🫑</span> Ardei copt 40g</li>
                             <li><span class="emoji">🧀</span> Cheddar 30g</li>
-                            <li><span class="emoji">🧀</span> Brânză topită 30g</li>
+                            <li><span class="emoji">🧀</span> Branza topita 30g</li>
                             <li><span class="emoji">🥬</span> Rucola 10g</li>
                         </ul>
                     </div>
                 </div>
 
                 <div class="menu-card">
-                    <div class="card-image"><img src="smashed-sandwich.jpeg" alt="Smashed Sandwich Vita" loading="lazy"></div>
+                    <div class="card-image"><img src="smashed-vita.jpeg" alt="Smashed Sandwich Vita" loading="lazy"></div>
                     <div class="card-content">
                         <div class="card-header">
                             <div class="item-title"><span class="item-number">7.</span> Smashed Sandwich Vita</div>
@@ -680,12 +742,12 @@
                         </div>
                         <div class="item-details">245 G</div>
                         <ul class="item-ingredients-list">
-                            <li><span class="emoji">🥩</span> Carne tocată vită 90g</li>
-                            <li><span class="emoji">🥖</span> Chiflă 70g</li>
+                            <li><span class="emoji">🥩</span> Carne tocata vita 90g</li>
+                            <li><span class="emoji">🥖</span> Chifla 70g</li>
                             <li><span class="emoji">🥣</span> Sosul casei 30g</li>
                             <li><span class="emoji">🧀</span> Cheddar 30g</li>
-                            <li><span class="emoji">🥒</span> Castraveți murați 15g</li>
-                            <li><span class="emoji">🧅</span> Ceapă crispy 10g</li>
+                            <li><span class="emoji">🥒</span> Castraveti murati 15g</li>
+                            <li><span class="emoji">🧅</span> Ceapa crispy 10g</li>
                         </ul>
                     </div>
                 </div>
@@ -702,9 +764,9 @@
                         </div>
                         <div class="item-details">530 G</div>
                         <ul class="item-ingredients-list">
-                            <li><span class="emoji">🍗</span> Șnițel piept pui 180g</li>
+                            <li><span class="emoji">🍗</span> Snitel piept pui 180g</li>
                             <li><span class="emoji">🥖</span> Schiacciata 180g</li>
-                            <li><span class="emoji">🥫</span> Sos de roșii 60g</li>
+                            <li><span class="emoji">🥫</span> Sos de rosii 60g</li>
                             <li><span class="emoji">🧀</span> Mozzarella 50g</li>
                             <li><span class="emoji">🌿</span> Pesto 30g</li>
                             <li><span class="emoji">🥬</span> Rucola 15g</li>
@@ -714,7 +776,7 @@
                 </div>
 
                 <div class="menu-card">
-                    <div class="card-image"><img src="panini-pofta-mare.jpeg" alt="Panini Pofta Mare Frate" loading="lazy"></div>
+                    <div class="card-image"><img src="sandvis-snitel-cartofi.jpeg" alt="Panini Pofta Mare Frate" loading="lazy"></div>
                     <div class="card-content">
                         <div class="card-header">
                             <div class="item-title"><span class="item-number">9.</span> Panini Pofta Mare, Frate</div>
@@ -722,12 +784,12 @@
                         </div>
                         <div class="item-details">545 G</div>
                         <ul class="item-ingredients-list">
-                            <li><span class="emoji">🍗</span> Șnițel piept pui 180g</li>
+                            <li><span class="emoji">🍗</span> Snitel piept pui 180g</li>
                             <li><span class="emoji">🥖</span> Schiacciata 180g</li>
                             <li><span class="emoji">🧀</span> Cheddar 60g</li>
-                            <li><span class="emoji">🍟</span> Cartofi prăjiți 40g</li>
-                            <li><span class="emoji">🥣</span> Sos de ceapă 30g</li>
-                            <li><span class="emoji">🥗</span> Salată asortată 30g</li>
+                            <li><span class="emoji">🍟</span> Cartofi prajiti 40g</li>
+                            <li><span class="emoji">🥣</span> Sos de ceapa 30g</li>
+                            <li><span class="emoji">🥗</span> Salata asortata 30g</li>
                             <li><span class="emoji">🥣</span> Sosul casei 25g</li>
                         </ul>
                     </div>
@@ -744,17 +806,17 @@
                         <ul class="item-ingredients-list">
                             <li><span class="emoji">🥖</span> Schiacciata 180g</li>
                             <li><span class="emoji">🍖</span> Mortadella 180g</li>
-                            <li><span class="emoji">🧀</span> Cremă brânză cu gorgonzola 75g</li>
-                            <li><span class="emoji">🍅</span> Roșii uscate 40g</li>
+                            <li><span class="emoji">🧀</span> Crema branza cu gorgonzola 75g</li>
+                            <li><span class="emoji">🍅</span> Rosii uscate 40g</li>
                             <li><span class="emoji">🌿</span> Pesto 20g</li>
                             <li><span class="emoji">🥬</span> Rucola 15g</li>
-                            <li><span class="emoji">🫒</span> Ulei măsline 5g</li>
+                            <li><span class="emoji">🫒</span> Ulei masline 5g</li>
                         </ul>
                     </div>
                 </div>
 
                 <div class="menu-card">
-                    <div class="card-image"><img src="link_imagine" alt="Panini Picante" loading="lazy"></div>
+                    <div class="card-image"><img src="panini-picant.jpeg" alt="Panini Picante" loading="lazy"></div>
                     <div class="card-content">
                         <div class="card-header">
                             <div class="item-title"><span class="item-number">11.</span> Panini Picante</div>
@@ -764,16 +826,16 @@
                         <ul class="item-ingredients-list">
                             <li><span class="emoji">🥖</span> Schiacciata 180g</li>
                             <li><span class="emoji">🥓</span> Salam ventricina 80g</li>
-                            <li><span class="emoji">🧀</span> Cremă brânză 70g</li>
-                            <li><span class="emoji">🍅</span> Roșii 70g</li>
+                            <li><span class="emoji">🧀</span> Crema branza 70g</li>
+                            <li><span class="emoji">🍅</span> Rosii 70g</li>
                             <li><span class="emoji">🥬</span> Rucola 15g</li>
-                            <li><span class="emoji">🥣</span> Cremă oțet balsamic 5g</li>
+                            <li><span class="emoji">🥣</span> Crema otet balsamic 5g</li>
                         </ul>
                     </div>
                 </div>
 
                 <div class="menu-card">
-                    <div class="card-image"><img src="link_imagine" alt="Panini Primavera" style="transform: scaleX(-1);" loading="lazy"></div>
+                    <div class="card-image"><img src="panini-pollo.jpeg" alt="Panini Primavera" style="transform: scaleX(-1);" loading="lazy"></div>
                     <div class="card-content">
                         <div class="card-header">
                             <div class="item-title"><span class="item-number">12.</span> Panini Primavera</div>
@@ -782,8 +844,8 @@
                         <div class="item-details">490 G</div>
                         <ul class="item-ingredients-list">
                             <li><span class="emoji">🥖</span> Schiacciata 180g</li>
-                            <li><span class="emoji">🍗</span> Șnițel piept pui 180g</li>
-                            <li><span class="emoji">🍅</span> Roșii 50g</li>
+                            <li><span class="emoji">🍗</span> Snitel piept pui 180g</li>
+                            <li><span class="emoji">🍅</span> Rosii 50g</li>
                             <li><span class="emoji">🧄</span> Aioli 40g</li>
                             <li><span class="emoji">🌿</span> Chimichurri 20g</li>
                             <li><span class="emoji">🥬</span> Rucola 15g</li>
@@ -794,7 +856,7 @@
                 </div>
 
                 <div class="menu-card">
-                    <div class="card-image"><img src="link_imagine" alt="Panini Napoli" style="filter: sepia(20%);" loading="lazy"></div>
+                    <div class="card-image"><img src="panini-picant.jpeg" alt="Panini Napoli" style="filter: sepia(20%);" loading="lazy"></div>
                     <div class="card-content">
                         <div class="card-header">
                             <div class="item-title"><span class="item-number">13.</span> Panini Napoli</div>
@@ -804,23 +866,23 @@
                         <ul class="item-ingredients-list">
                             <li><span class="emoji">🥖</span> Schiacciata 180g</li>
                             <li><span class="emoji">🥓</span> Salam napoli 150g</li>
-                            <li><span class="emoji">🧀</span> Cremă brânză 75g</li>
-                            <li><span class="emoji">🍅</span> Roșii 45g</li>
+                            <li><span class="emoji">🧀</span> Crema branza 75g</li>
+                            <li><span class="emoji">🍅</span> Rosii 45g</li>
                             <li><span class="emoji">🧀</span> Mozzarella 40g</li>
-                            <li><span class="emoji">🥗</span> Salată asortată 30g</li>
-                            <li><span class="emoji">🫒</span> Măsline 10g</li>
+                            <li><span class="emoji">🥗</span> Salata asortata 30g</li>
+                            <li><span class="emoji">🫒</span> Masline 10g</li>
                         </ul>
                     </div>
                 </div>
             </div>
 
-            <h2 class="category-title" style="margin-top: 40px;">Extra & Răcoritoare</h2>
+            <h2 class="category-title" style="margin-top: 40px;">Extra & Racoritoare</h2>
             <div class="menu-grid" style="justify-content: center;">
                 <div class="menu-card" style="max-width: 400px; margin: auto;">
                     <div class="card-image" style="height: 250px;"><img src="cartofi-prajiti.jpeg" alt="Cartofi Prajiti" loading="lazy"></div>
                     <div class="card-content">
                         <div class="card-header">
-                            <div class="item-title"><span class="item-number">14.</span> Cartofi Prăjiți</div>
+                            <div class="item-title"><span class="item-number">14.</span> Cartofi Prajiti</div>
                             <div class="item-price">8 RON</div>
                         </div>
                         <div class="item-details">120 G</div>
@@ -836,38 +898,58 @@
                 <div class="drink-item"><span>🥤 Coca Cola</span> <span>7 RON</span></div>
                 <div class="drink-item"><span>🍊 Fanta</span> <span>7 RON</span></div>
                 <div class="drink-item"><span>🍋 Sprite</span> <span>7 RON</span></div>
-                <div class="drink-item"><span>💧 Apă Plată</span> <span>6 RON</span></div>
-                <div class="drink-item"><span>🫧 Apă Minerală</span> <span>6 RON</span></div>
+                <div class="drink-item"><span>💧 Apa Plata</span> <span>6 RON</span></div>
+                <div class="drink-item"><span>🫧 Apa Minerala</span> <span>6 RON</span></div>
             </div>
         </div>
     </section>
+
     <section id="despre" class="section-container section-dark">
         <div class="content-wrapper text-box">
             <h2 class="category-title">Cine suntem?</h2>
-            <p style="margin-bottom: 20px;"><strong>Sandwichef</strong> este tributul pasiunii noastre pentru street food de calitate superioară, pentru toți cei care nu pot rezista în fața unui sandviș plin de savoare. Ingredientele proaspete, pâinea rumenită perfect și combinațiile curajoase de gusturi fac din fiecare preparat o adevărată experiență culinară.</p>
-            <p>Fie că poftești la un Smashed Burger suculent sau la un Panini cu Mortadella și un strat fin de gorgonzola, vrem să fii sigur că mâncarea pe care o primești este preparată mereu cu dedicare. Nu facem compromisuri când vine vorba de calitatea ingredientelor, pentru că aici, gustul primează!</p>
+            <p style="margin-bottom: 20px;"><strong>Sandwichef</strong> este tributul pasiunii noastre pentru street food de calitate superioara, pentru toti cei care nu pot rezista in fata unui sandvis plin de savoare. Ingredientele proaspete, painea rumenita perfect si combinatiile curajoase de gusturi fac din fiecare preparat o adevarata experienta culinara.</p>
+            <p>Fie ca poftesti la un Smashed Burger suculent sau la un Panini cu Mortadella si un strat fin de gorgonzola, vrem sa fii sigur ca mancarea pe care o primesti este preparata mereu cu dedicare. Nu facem compromisuri cand vine vorba de calitatea ingredientelor, pentru ca aici, gustul primeaza!</p>
         </div>
     </section>
 
     <section id="livrari" class="section-container section-light">
         <div class="content-wrapper text-box">
-            <h2 class="category-title">Livrări Rapide</h2>
-            <p>Ai poftă de ceva bun, dar preferi confortul casei tale? Nicio problemă! Îți aducem produsele noastre calde și delicioase direct la ușă. Comandă telefonic sau ridică-le direct de la locația noastră.</p>
+            <h2 class="category-title">Livrari Rapide</h2>
+            <p>Ai pofta de ceva bun, dar preferi confortul casei tale? Nicio problema! Iti aducem produsele noastre calde si delicioase direct la usa. Comanda telefonic sau prin partenerii nostri.</p>
             
             <div class="delivery-buttons">
-                <a href="tel:0700000000" class="btn-delivery">📞 Sună pentru Comandă</a>
+                <a href="tel:0700000000" class="btn-delivery">
+                    📞 Suna pentru Comanda
+                </a>
+                
+                <a href="#" class="btn-delivery btn-bolt">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 14.5v-5l6 3.5-6 3.5zm0-7.5V4.5l6 3.5-6 3.5z"/></svg>
+                    Comanda pe Bolt Food
+                </a>
             </div>
         </div>
     </section>
 
     <section id="contact" class="section-container section-dark" style="text-align: center;">
         <div class="content-wrapper">
-            <h2 class="category-title" style="display: block; margin-bottom: 20px;">Vino să ne vizitezi!</h2>
+            <h2 class="category-title" style="display: block; margin-bottom: 20px;">Vino sa ne vizitezi!</h2>
             
-            <a href="https://www.facebook.com/people/Sandwichef/61552030004351/" target="_blank" class="social-button">
-                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="currentColor"><path d="M9 8h-3v4h3v12h5v-12h3.642l.358-4h-4v-1.667c0-.955.192-1.333 1.115-1.333h2.885v-5h-3.808c-3.596 0-5.192 1.583-5.192 4.615v3.385z"/></svg>
-                Urmărește-ne pe Facebook
-            </a>
+            <div class="social-buttons-container">
+                <a href="#" target="_blank" class="social-button btn-facebook">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M9 8h-3v4h3v12h5v-12h3.642l.358-4h-4v-1.667c0-.955.192-1.333 1.115-1.333h2.885v-5h-3.808c-3.596 0-5.192 1.583-5.192 4.615v3.385z"/></svg>
+                    Facebook
+                </a>
+
+                <a href="#" target="_blank" class="social-button btn-instagram">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+                    Instagram
+                </a>
+
+                <a href="#" target="_blank" class="social-button btn-tiktok">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M12.525.02c1.31-.02 2.61-.01 3.91-.02.08 1.53.63 3.09 1.75 4.17 1.12 1.11 2.7 1.62 4.24 1.79v4.03c-1.44-.05-2.89-.35-4.2-.97-.57-.26-1.1-.59-1.62-.93-.01 2.92.01 5.84-.02 8.75-.08 1.4-.54 2.79-1.35 3.94-1.31 1.92-3.58 3.17-5.91 3.21-1.43.08-2.86-.31-4.08-1.03-2.02-1.19-3.44-3.37-3.65-5.71-.02-.5-.03-1-.01-1.49.18-1.9 1.12-3.72 2.58-4.96 1.66-1.44 3.98-2.13 6.15-1.72.02 1.48-.04 2.96-.04 4.44-.99-.32-2.15-.23-3.02.37-.63.41-1.11 1.04-1.36 1.75-.21.51-.15 1.07-.14 1.61.24 1.64 1.82 3.02 3.5 2.87 1.12-.01 2.19-.66 2.77-1.61.19-.33.4-.67.41-1.06.1-1.79.06-3.57.07-5.36.01-4.03-.01-8.05.02-12.07z"/></svg>
+                    TikTok
+                </a>
+            </div>
 
             <div class="map-container">
                 <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2854.1385852714616!2d23.78951687756116!3d44.327656571078236!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x4752d700794a292d%3A0xeae5efd854a9e4a4!2sSandwichef!5e0!3m2!1sen!2sro!4v1771606955277!5m2!1sen!2sro" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>

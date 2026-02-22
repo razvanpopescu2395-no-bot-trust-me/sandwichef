@@ -8,7 +8,10 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;800;900&family=Permanent+Marker&display=swap" rel="stylesheet">
     
+    <link rel="icon" type="image/png" href="logo.png">
+    
     <style>
+        /* --- SETĂRI GENERALE ȘI VARIABILE --- */
         :root {
             --primary-color: #ff3e3e;
             --secondary-color: #2d3436;
@@ -19,6 +22,7 @@
             --shadow-hover: 0 15px 30px rgba(255, 62, 62, 0.15);
         }
 
+        /* --- SMOOTH SCROLL --- */
         html {
             scroll-behavior: smooth;
             scroll-padding-top: 90px;
@@ -39,6 +43,7 @@
             padding-top: 80px;
         }
 
+        /* --- NAVBAR CENTRAT --- */
         .navbar {
             position: fixed;
             top: 0;
@@ -62,15 +67,6 @@
             padding: 0;
         }
 
-        .nav-logo {
-            font-family: 'Permanent Marker', cursive;
-            font-size: 2.8rem;
-            color: var(--primary-color);
-            text-decoration: none;
-            margin: 0 60px;
-            transform: rotate(-2deg);
-        }
-
         .nav-links li a {
             text-decoration: none;
             color: var(--secondary-color);
@@ -85,7 +81,7 @@
             color: var(--primary-color);
         }
 
-        /* AM SCOS "fixed" DE LA BACKGROUND AICI PENTRU A OPRI LAG-UL */
+        /* --- HERO SECTION --- */
         header {
             background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('sandvis-snitel-cartofi.jpeg') center/cover no-repeat;
             height: 75vh;
@@ -104,6 +100,7 @@
             flex-direction: column;
             align-items: center;
             justify-content: center;
+            position: relative; /* important */
         }
 
         .hero-tag {
@@ -117,14 +114,51 @@
             margin-bottom: 20px;
         }
 
-        .header-content h1 {
-            font-family: 'Permanent Marker', cursive;
-            font-size: 5.5rem;
-            color: var(--primary-color);
-            text-shadow: 4px 4px 15px rgba(0,0,0,0.8);
-            line-height: 1.1;
-            margin-bottom: 30px;
-            letter-spacing: 2px;
+        /* === STILURI NOI PENTRU LOGO-UL CENTRAL ȘI TEXTUL CURBAT === */
+        .logo-hero-container {
+            position: relative;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 350px; /* Dimensiunea fundalului circular */
+            height: 350px;
+            border-radius: 50%;
+            background-color: rgba(255, 255, 255, 0.7); /* Alb semi-transparent */
+            margin: 20px auto;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+            overflow: visible; /* pentru ca textul curbat să iasă din caseta SVG */
+        }
+
+        /* SVG-ul pentru text curbat, poziționat absolut pentru a overlay-a imaginea */
+        .curved-text-svg {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 2; /* plasează textul deasupra imaginii logo-ului */
+        }
+
+        /* Stilul pentru textul curbat propriu-zis */
+        .curved-text {
+            fill: var(--primary-color); /* Roșu din variabilele site-ului */
+            font-family: 'Permanent Marker', cursive; /* Același font ca în meniu */
+            font-size: 32px;
+            font-weight: bold;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            z-index: 2;
+        }
+
+        /* Imaginea logo-ului în centrul emblemei, poziționată sub textul curbat */
+        .hero-logo-img {
+            max-width: 65%; /* logo-ul propriu-zis mai mic decât fundalul circular */
+            max-height: 65%;
+            position: absolute;
+            top: 55%; /* poziționat vizual mai jos pentru a nu se suprapune cu arcul textului */
+            left: 50%;
+            transform: translate(-50%, -50%);
+            z-index: 1; /* plasează imaginea sub arcul textului, dar pe margini */
         }
 
         .hero-btn {
@@ -138,6 +172,7 @@
             letter-spacing: 1px;
             border: 2px solid transparent;
             transition: all 0.3s ease;
+            margin-top: 20px; /* Spațiu între emblema logo-ului și buton */
         }
 
         .hero-btn:hover {
@@ -145,6 +180,7 @@
             border-color: white;
         }
 
+        /* --- SECTIONS LAYOUT --- */
         .section-container {
             padding: 80px 20px;
         }
@@ -189,6 +225,7 @@
             border-radius: 2px;
         }
 
+        /* --- GRID PENTRU MENIU --- */
         .menu-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
@@ -205,7 +242,7 @@
             display: flex;
             flex-direction: column;
             border: 1px solid transparent;
-            will-change: transform; /* Optimizare pt scroll lin */
+            will-change: transform; /* Optimizare pentru scroll lin */
         }
 
         .menu-card:hover {
@@ -325,6 +362,7 @@
             color: var(--primary-color);
         }
 
+        /* --- STILURI SECȚIUNE DESPRE ȘI LIVRĂRI --- */
         .text-box {
             text-align: center;
             max-width: 800px;
@@ -360,6 +398,8 @@
             background-color: #e62e2e;
         }
 
+        /* === CONTACT, HARTĂ ȘI RECENZII === */
+        /* Corecție suprapunere Facebook: asigură layout-ul pe rânduri distincte și o poziționare centrală stabilă */
         .social-button {
             display: inline-flex;
             align-items: center;
@@ -374,7 +414,7 @@
             font-size: 1.2rem;
             transition: all 0.3s ease;
             box-shadow: 0 5px 15px rgba(24, 119, 242, 0.3);
-            margin: 30px auto 50px auto;
+            margin: 30px auto 50px auto; /* poziționare centrală și spațiu generos sub el */
         }
 
         .social-button:hover {
@@ -447,6 +487,7 @@
             font-size: 1.2rem;
         }
 
+        /* --- FOOTER --- */
         footer {
             background: #111;
             color: white;
@@ -454,6 +495,7 @@
             padding: 40px 20px;
         }
 
+        /* --- RESPONSIVE --- */
         @media (max-width: 900px) {
             body { padding-top: 90px; }
             header { margin-top: -90px; height: 100vh; }
@@ -477,7 +519,9 @@
             <li><a href="#meniu">Meniu</a></li>
             <li><a href="#despre">Despre noi</a></li>
         </ul>
+        
         <a href="#acasa" class="nav-logo">Sandwichef</a>
+        
         <ul class="nav-links">
             <li><a href="#livrari">Livrări</a></li>
             <li><a href="#contact">Contact</a></li>
@@ -487,7 +531,21 @@
     <header id="acasa">
         <div class="header-content">
             <div class="hero-tag">BINE AȚI VENIT!</div>
-            <h1>MEET THE<br>TASTE!</h1>
+            
+            <div class="logo-hero-container">
+                
+                <svg viewBox="0 0 350 350" class="curved-text-svg">
+                  <path id="curve" d="M 35, 175 a 140,140 0 0,1 280,0" fill="transparent"/>
+                  <text class="curved-text">
+                    <textPath xlink:href="#curve" startOffset="50%" text-anchor="middle">
+                      chef de sandwich
+                    </textPath>
+                  </text>
+                </svg>
+                
+                <img src="logo.png" alt="Chef de Sandwich Logo" class="hero-logo-img">
+            </div>
+            
             <a href="#meniu" class="hero-btn">— Răsfoiește Meniul —</a>
         </div>
     </header>
@@ -538,7 +596,7 @@
                 </div>
 
                 <div class="menu-card">
-                    <div class="card-image"><img src="panini-pollo.jpeg" alt="Sandwich cu Șnițel" style="filter: grayscale(10%);" loading="lazy"></div>
+                    <div class="card-image"><img src="link_imagine" alt="Sandwich cu Șnițel" style="filter: grayscale(10%);" loading="lazy"></div>
                     <div class="card-content">
                         <div class="card-header">
                             <div class="item-title"><span class="item-number">3.</span> Sandwich cu Șnițel</div>
@@ -574,7 +632,7 @@
                 </div>
 
                 <div class="menu-card">
-                    <div class="card-image"><img src="bagheta-salam.jpeg" alt="Sandwich Salam Picant" loading="lazy"></div>
+                    <div class="card-image"><img src="link_imagine" alt="Sandwich Salam Picant" loading="lazy"></div>
                     <div class="card-content">
                         <div class="card-header">
                             <div class="item-title"><span class="item-number">5.</span> Sandwich cu Salam Picant</div>
@@ -594,7 +652,7 @@
                 </div>
 
                 <div class="menu-card">
-                    <div class="card-image"><img src="bagheta-salam.jpeg" alt="Sandwich Bacon" style="filter: hue-rotate(15deg);" loading="lazy"></div>
+                    <div class="card-image"><img src="link_imagine" alt="Sandwich Bacon" style="filter: hue-rotate(15deg);" loading="lazy"></div>
                     <div class="card-content">
                         <div class="card-header">
                             <div class="item-title"><span class="item-number">6.</span> Sandwich cu Bacon</div>
@@ -614,7 +672,7 @@
                 </div>
 
                 <div class="menu-card">
-                    <div class="card-image"><img src="smashed-vita.jpeg" alt="Smashed Sandwich Vita" loading="lazy"></div>
+                    <div class="card-image"><img src="smashed-sandwich.jpeg" alt="Smashed Sandwich Vita" loading="lazy"></div>
                     <div class="card-content">
                         <div class="card-header">
                             <div class="item-title"><span class="item-number">7.</span> Smashed Sandwich Vita</div>
@@ -656,7 +714,7 @@
                 </div>
 
                 <div class="menu-card">
-                    <div class="card-image"><img src="sandvis-snitel-cartofi.jpeg" alt="Panini Pofta Mare Frate" loading="lazy"></div>
+                    <div class="card-image"><img src="panini-pofta-mare.jpeg" alt="Panini Pofta Mare Frate" loading="lazy"></div>
                     <div class="card-content">
                         <div class="card-header">
                             <div class="item-title"><span class="item-number">9.</span> Panini Pofta Mare, Frate</div>
@@ -696,7 +754,7 @@
                 </div>
 
                 <div class="menu-card">
-                    <div class="card-image"><img src="panini-picant.jpeg" alt="Panini Picante" loading="lazy"></div>
+                    <div class="card-image"><img src="link_imagine" alt="Panini Picante" loading="lazy"></div>
                     <div class="card-content">
                         <div class="card-header">
                             <div class="item-title"><span class="item-number">11.</span> Panini Picante</div>
@@ -715,7 +773,7 @@
                 </div>
 
                 <div class="menu-card">
-                    <div class="card-image"><img src="panini-pollo.jpeg" alt="Panini Primavera" style="transform: scaleX(-1);" loading="lazy"></div>
+                    <div class="card-image"><img src="link_imagine" alt="Panini Primavera" style="transform: scaleX(-1);" loading="lazy"></div>
                     <div class="card-content">
                         <div class="card-header">
                             <div class="item-title"><span class="item-number">12.</span> Panini Primavera</div>
@@ -736,7 +794,7 @@
                 </div>
 
                 <div class="menu-card">
-                    <div class="card-image"><img src="panini-picant.jpeg" alt="Panini Napoli" style="filter: sepia(20%);" loading="lazy"></div>
+                    <div class="card-image"><img src="link_imagine" alt="Panini Napoli" style="filter: sepia(20%);" loading="lazy"></div>
                     <div class="card-content">
                         <div class="card-header">
                             <div class="item-title"><span class="item-number">13.</span> Panini Napoli</div>

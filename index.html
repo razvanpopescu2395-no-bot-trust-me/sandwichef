@@ -715,6 +715,19 @@
             .social-button { width: 80%; }
         }
 
+        .delivery-buttons {
+            display: flex;
+            flex-direction: column; /* Le așează una sub alta */
+            align-items: center; /* Le centrează și blochează întinderea pe toată lățimea */
+            gap: 15px;
+            margin-top: 40px;
+        }
+
+        .delivery-buttons .btn-delivery {
+            width: fit-content !important; /* Forțează butonul să fie doar cât textul lui */
+            justify-content: center;
+        }
+
         @media (max-width: 950px) and (orientation: landscape) {
             .menu-grid { 
                 grid-template-columns: repeat(2, 1fr) !important; 

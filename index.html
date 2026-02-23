@@ -154,8 +154,8 @@
 
         /* --- HERO SECTION --- */
         header {
-            background: linear-gradient(to bottom, rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.7)), url('sandvis-snitel-cartofi.jpeg') center/cover no-repeat;
             height: 100vh;
+            width: 100vw;
             display: flex;
             flex-direction: column;
             justify-content: center;
@@ -163,9 +163,51 @@
             text-align: center;
             color: white;
             position: relative; 
+            overflow: hidden; /* Ascunde imaginile care ies din cadru */
+            background-color: #000;
         }
 
-        /* --- BUTOANE LIVRARE (DOAR PE MAIN PAGE) --- */
+        /* === FUNDAL GALERIE ANIMATA === */
+        .hero-gallery-container {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 1; 
+        }
+
+        /* Tenta intunecata peste grila foto ca textul sa fie perfect vizibil */
+        .hero-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(to bottom, rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.8));
+            z-index: 2;
+            pointer-events: none;
+        }
+
+        .gallery-item {
+            position: absolute; 
+            top: 0;
+            left: 0;
+            overflow: hidden;
+            transition: transform 1.2s cubic-bezier(0.4, 0, 0.2, 1);
+            box-sizing: border-box; 
+        }
+
+        .gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+            opacity: 0.55; 
+            transition: opacity 0.5s ease;
+        }
+
+        /* --- BUTOANE LIVRARE --- */
         .hero-top-buttons {
             position: absolute;
             top: 110px; 
@@ -214,12 +256,14 @@
             box-shadow: 0 10px 25px rgba(50, 187, 120, 0.6);
         }
 
+        /* --- CONTINUT HERO --- */
         .header-content {
             display: flex;
             flex-direction: column;
             align-items: center;
             justify-content: center;
             position: relative;
+            z-index: 3; /* Deasupra grilei foto */
             animation: fadeUp 1.2s cubic-bezier(0.2, 0.8, 0.2, 1) forwards; 
         }
 
@@ -236,7 +280,6 @@
             box-shadow: 0 4px 15px rgba(0,0,0,0.3);
         }
 
-        /* === LOGO CENTRAL SI TEXT CURBAT DUBLE === */
         .logo-hero-container {
             position: relative;
             display: flex;
@@ -492,7 +535,6 @@
             color: var(--primary-color);
         }
 
-        /* --- STILURI SECȚIUNE DESPRE SI LIVRARI --- */
         .text-box {
             text-align: center;
             max-width: 800px;
@@ -620,7 +662,6 @@
            RESPONSIVE PENTRU MOBIL 
            ======================================================== */
         @media (max-width: 900px) {
-            /* Navbar */
             .navbar {
                 flex-direction: row;
                 flex-wrap: wrap;
@@ -639,7 +680,6 @@
             .nav-links { gap: 20px; }
             .nav-links li a { font-size: 0.8rem; }
             
-            /* Logo Hero Center */
             .logo-hero-container { 
                 width: 300px; 
                 height: 300px; 
@@ -648,14 +688,12 @@
             .hero-logo-img { width: 180px; }
             .logo-backdrop { width: 110px; height: 110px; }
             
-            /* Buton Hero */
             .hero-btn {
                 padding: 14px 30px;
                 font-size: 0.95rem;
                 margin-bottom: 20px; 
             }
 
-            /* Butoanele de comanda devin frumos stivuite la baza pe mobil */
             .hero-top-buttons {
                 position: relative;
                 top: 0;
@@ -670,7 +708,6 @@
                 justify-content: center;
             }
 
-            /* Restul site-ului */
             .category-title { font-size: 2.2rem; }
             .menu-grid { grid-template-columns: 1fr; }
             .map-container { height: 300px; }
@@ -678,9 +715,6 @@
             .social-button { width: 80%; }
         }
 
-        /* ========================================================
-           RESPONSIVE PENTRU MOBIL (LANDSCAPE)
-           ======================================================== */
         @media (max-width: 950px) and (orientation: landscape) {
             .menu-grid { 
                 grid-template-columns: repeat(2, 1fr) !important; 
@@ -690,6 +724,8 @@
             header { height: auto !important; padding: 120px 0 60px 0; }
             .logo-hero-container { width: 220px; height: 220px; margin: 10px auto 20px auto; }
             .hero-logo-img { width: 150px; }
+            /* Ascundem butoanele de comanda in landscape pentru a nu aglomera ecranul subtire */
+            .hero-top-buttons { display: none; }
         }
     </style>
 </head>
@@ -708,6 +744,32 @@
     </nav>
 
     <header id="acasa">
+        
+        <div class="hero-gallery-container" id="heroGallery">
+            <div class="gallery-item"><img src="morning-bacon.jpeg" alt="Meniu Sandwichef"></div>
+            <div class="gallery-item"><img src="bagheta-fresh.jpeg" alt="Meniu Sandwichef"></div>
+            <div class="gallery-item"><img src="panini-pollo.jpeg" alt="Meniu Sandwichef"></div>
+            <div class="gallery-item"><img src="wrap-crispy.jpeg" alt="Meniu Sandwichef"></div>
+            <div class="gallery-item"><img src="bagheta-salam.jpeg" alt="Meniu Sandwichef"></div>
+            <div class="gallery-item"><img src="smashed-vita.jpeg" alt="Meniu Sandwichef"></div>
+            <div class="gallery-item"><img src="sandvis-snitel-cartofi.jpeg" alt="Meniu Sandwichef"></div>
+            <div class="gallery-item"><img src="panini-mortadella.jpeg" alt="Meniu Sandwichef"></div>
+            <div class="gallery-item"><img src="panini-picant.jpeg" alt="Meniu Sandwichef"></div>
+            <div class="gallery-item"><img src="cartofi-prajiti.jpeg" alt="Meniu Sandwichef"></div>
+        </div>
+        
+        <div class="hero-overlay"></div>
+
+        <div class="hero-top-buttons">
+            <a href="tel:0735468253" class="btn-delivery">
+                📞 <span class="btn-text">Ridicare Personală</span>
+            </a>
+            
+            <a href="https://food.bolt.eu/ro-ro/1052-craiova/p/91364-sandwichef/" class="btn-delivery btn-bolt">
+                🟢 <span class="btn-text">Comandă Bolt Food</span>
+            </a>
+        </div>
+
         <div class="header-content">
             <div class="hero-tag">Bine ati venit!</div>
             
@@ -735,16 +797,6 @@
             </div>
             
             <a href="#meniu" class="hero-btn">— Rasfoieste Meniul —</a>
-        </div>
-
-        <div class="hero-top-buttons">
-            <a href="tel:0735468253" class="btn-delivery">
-                📞 <span class="btn-text">Ridicare Personală</span>
-            </a>
-            
-            <a href="https://food.bolt.eu/ro-ro/1052-craiova/p/91364-sandwichef/" class="btn-delivery btn-bolt">
-                🟢 <span class="btn-text">Comandă Bolt Food</span>
-            </a>
         </div>
     </header>
 
@@ -1069,7 +1121,7 @@
         <div class="content-wrapper">
             <h2 class="category-title" style="display: block; margin-bottom: 20px;">Vino sa ne vizitezi!</h2>
             
-            <div class="social-buttons-container" >
+            <div class="social-buttons-container">
                 <a href="https://www.facebook.com/p/Sandwichef-61552030004351/" target="_blank" class="social-button btn-facebook">
                     <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M9 8h-3v4h3v12h5v-12h3.642l.358-4h-4v-1.667c0-.955.192-1.333 1.115-1.333h2.885v-5h-3.808c-3.596 0-5.192 1.583-5.192 4.615v3.385z"/></svg>
                     Facebook
@@ -1131,6 +1183,69 @@
                 navbar.classList.remove('scrolled');
             }
         });
+    </script>
+    
+    <script>
+        const container = document.getElementById('heroGallery');
+        const items = Array.from(container.children);
+        let columns;
+        let visibleRows;
+
+        function shuffleArray(array) {
+            for (let i = array.length - 1; i > 0; i--) {
+                const j = Math.floor(Math.random() * (i + 1));
+                [array[i], array[j]] = [array[j], array[i]];
+            }
+        }
+
+        function updateLayout(animate = true) {
+            const width = window.innerWidth;
+            const height = window.innerHeight; // Luam exact inaltimea ecranului (100vh)
+
+            // Pe mobil impartim ecranul in 2 coloane si vrem 4 randuri sa fie vizibile pe ecran.
+            // Pe desktop vrem 5 coloane cu 2 randuri vizibile.
+            if (width <= 800) {
+                columns = 2;
+                visibleRows = 4;
+            } else {
+                columns = 5;
+                visibleRows = 2;
+            }
+
+            // Calculam ca fiecare poza sa isi ia cota parte perfecta din inaltimea si latimea ecranului
+            const itemWidth = width / columns;
+            const itemHeight = height / visibleRows;
+
+            items.forEach((item, index) => {
+                item.style.transition = animate ? 'transform 1.2s cubic-bezier(0.4, 0, 0.2, 1)' : 'none';
+                item.style.width = itemWidth + 'px';
+                item.style.height = itemHeight + 'px';
+
+                const row = Math.floor(index / columns);
+                const col = index % columns;
+
+                const translateX = col * itemWidth;
+                const translateY = row * itemHeight;
+
+                item.style.transform = `translate3d(${translateX}px, ${translateY}px, 0)`;
+            });
+        }
+
+        function smoothShuffle() {
+            shuffleArray(items);
+            updateLayout(true);
+        }
+
+        window.addEventListener('load', () => {
+            shuffleArray(items);
+            updateLayout(false);
+        });
+
+        window.addEventListener('resize', () => {
+            updateLayout(false);
+        });
+
+        setInterval(smoothShuffle, 4000);
     </script>
 
 </body>

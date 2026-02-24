@@ -1208,12 +1208,13 @@
         let columns;
         let visibleRows;
 
-        function shuffleArray(array) {
-            for (let i = array.length - 1; i > 0; i--) {
-                const j = Math.floor(Math.random() * (i + 1));
-                [array[i], array[j]] = [array[j], array[i]];
-            }
-        }
+        // Listă cu numele fișierelor care TREBUIE să apară la shuffle
+        // (Cele 6 panini + morning bacon + bagheta bacon + smashed vita)
+        const shuffleList = [
+            'panini-pollo.jpeg', 'panini-mamma-mia.jpeg', 'panini-picante.jpeg', 
+            'panini-pofta-mare.jpeg', 'panini-primavera.jpeg', 'panini-napoli.jpeg',
+            'morning-bacon.jpeg', 'sandwich-bacon.jpeg', 'smashed-vita.jpeg'
+        ];
 
         function updateLayout(animate = true) {
             const width = window.innerWidth;
@@ -1229,15 +1230,28 @@
 
             const itemWidth = width / columns;
             const itemHeight = height / visibleRows;
-            const maxVisible = columns * visibleRows; // Numarul de locuri pe ecran
+            const maxVisible = columns * visibleRows;
 
-            items.forEach((item, index) => {
+            // Împărțim pozele: cele din listă vor fi amestecate, restul rămân la final
+            const toShuffle = items.filter(item => 
+                shuffleList.some(name => item.querySelector('img').src.includes(name))
+            );
+            
+            // Amestecăm doar pozele selectate
+            for (let i = toShuffle.length - 1; i > 0; i--) {
+                const j = Math.floor(Math.random() * (i + 1));
+                [toShuffle[i], toShuffle[j]] = [toShuffle[j], toShuffle[i]];
+            }
+
+            // Reconstruim ordinea: pozele de shuffle primele, apoi restul (ex: cartofii)
+            const others = items.filter(item => !toShuffle.includes(item));
+            const finalOrder = [...toShuffle, ...others];
+
+            finalOrder.forEach((item, index) => {
                 item.style.transition = animate ? 'transform 1.2s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.5s' : 'none';
                 item.style.width = itemWidth + 'px';
                 item.style.height = itemHeight + 'px';
 
-                // Daca indexul pozei e mai mare decat locurile de pe ecran, 
-                // o ascundem si o punem in afara vizibilitatii
                 if (index >= maxVisible) {
                     item.style.opacity = "0";
                     item.style.transform = `translate3d(0, -200%, 0)`; 
@@ -1247,29 +1261,13 @@
                 item.style.opacity = "1";
                 const row = Math.floor(index / columns);
                 const col = index % columns;
-
-                const translateX = col * itemWidth;
-                const translateY = row * itemHeight;
-
-                item.style.transform = `translate3d(${translateX}px, ${translateY}px, 0)`;
+                item.style.transform = `translate3d(${col * itemWidth}px, ${row * itemHeight}px, 0)`;
             });
         }
 
-        function smoothShuffle() {
-            shuffleArray(items);
-            updateLayout(true);
-        }
-
-        window.addEventListener('load', () => {
-            shuffleArray(items);
-            updateLayout(false);
-        });
-
-        window.addEventListener('resize', () => {
-            updateLayout(false);
-        });
-
-        setInterval(smoothShuffle, 4000);
+        window.addEventListener('load', () => updateLayout(false));
+        window.addEventListener('resize', () => updateLayout(false));
+        setInterval(() => updateLayout(true), 4000);
     </script>
 
 </body>

@@ -9,7 +9,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;800;900&family=Permanent+Marker&display=swap" rel="stylesheet">
     
-    <link rel="icon" type="image/png" href="logo.png">
+    <link rel="icon" type="image/png" href="Image/logo.png">
     
     <style>
         /* --- SETARI GENERALE SI VARIABILE --- */
@@ -1217,10 +1217,8 @@
 
         function updateLayout(animate = true) {
             const width = window.innerWidth;
-            const height = window.innerHeight; // Luam exact inaltimea ecranului (100vh)
+            const height = window.innerHeight;
 
-            // Pe mobil impartim ecranul in 2 coloane si vrem 4 randuri sa fie vizibile pe ecran.
-            // Pe desktop vrem 5 coloane cu 2 randuri vizibile.
             if (width <= 800) {
                 columns = 2;
                 visibleRows = 4;
@@ -1229,15 +1227,24 @@
                 visibleRows = 2;
             }
 
-            // Calculam ca fiecare poza sa isi ia cota parte perfecta din inaltimea si latimea ecranului
             const itemWidth = width / columns;
             const itemHeight = height / visibleRows;
+            const maxVisible = columns * visibleRows; // Numarul de locuri pe ecran
 
             items.forEach((item, index) => {
-                item.style.transition = animate ? 'transform 1.2s cubic-bezier(0.4, 0, 0.2, 1)' : 'none';
+                item.style.transition = animate ? 'transform 1.2s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.5s' : 'none';
                 item.style.width = itemWidth + 'px';
                 item.style.height = itemHeight + 'px';
 
+                // Daca indexul pozei e mai mare decat locurile de pe ecran, 
+                // o ascundem si o punem in afara vizibilitatii
+                if (index >= maxVisible) {
+                    item.style.opacity = "0";
+                    item.style.transform = `translate3d(0, -200%, 0)`; 
+                    return;
+                }
+
+                item.style.opacity = "1";
                 const row = Math.floor(index / columns);
                 const col = index % columns;
 

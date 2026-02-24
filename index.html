@@ -1192,74 +1192,55 @@
     const items = Array.from(container.children);
     let columns, visibleRows;
 
-    // Lista exacta a fisierelor care intra in shuffle (fara restul precum cartofii sau bagheta fresh)
-    const shuffleList = [
-        'panini-pollo.jpeg', 'panini-mamma-mia.jpeg', 'panini-picante.jpeg', 
-        'panini-pofta-mare.jpeg', 'panini-primavera.jpeg', 'panini-napoli.jpeg',
-        'morning-bacon.jpeg', 'sandwich-bacon.jpeg', 'smashed-vita.jpeg'
-    ];
-
     function updateLayout(animate = true) {
         const width = window.innerWidth;
         const height = window.innerHeight;
 
+        // Setăm grila în funcție de dispozitiv
         if (width <= 800) {
-            columns = 2;
-            visibleRows = 4;
+            columns = 2; // 2 coloane pe mobil
+            visibleRows = 4; // 4 rânduri pe mobil (8 poze vizibile)
         } else {
-            columns = 5;
-            visibleRows = 2;
+            columns = 5; // 5 coloane pe desktop
+            visibleRows = 2; // 2 rânduri pe desktop (10 poze vizibile)
         }
 
         const itemWidth = width / columns;
         const itemHeight = height / visibleRows;
         const maxVisible = columns * visibleRows;
 
-        // 1. Identificam care elemente sunt in shuffleList
-        let toShuffle = [];
-        let others = [];
-
-        items.forEach(item => {
-            const imgSrc = item.querySelector('img').getAttribute('src');
-            // Verificam daca numele pozei din folder se afla in lista noastra
-            const isMatch = shuffleList.some(fileName => imgSrc.includes(fileName));
-            if (isMatch) {
-                toShuffle.push(item);
-            } else {
-                others.push(item);
-            }
-        });
-
-        // 2. Amestecam doar pozele din toShuffle
-        for (let i = toShuffle.length - 1; i > 0; i--) {
+        // 1. Amestecăm absolut toate elementele din listă (toate cele 14)
+        for (let i = items.length - 1; i > 0; i--) {
             const j = Math.floor(Math.random() * (i + 1));
-            [toShuffle[i], toShuffle[j]] = [toShuffle[j], toShuffle[i]];
+            [items[i], items[j]] = [items[j], items[i]];
         }
 
-        // 3. Combinam: intai cele de shuffle (ca sa apara pe ecran), apoi restul
-        const finalOrder = [...toShuffle, ...others];
-
-        // 4. Pozitionam
-        finalOrder.forEach((item, index) => {
+        // 2. Le poziționăm în grilă
+        items.forEach((item, index) => {
+            // Aplicăm tranziția pentru mișcare fluidă
             item.style.transition = animate ? 'transform 1.2s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.5s' : 'none';
             item.style.width = itemWidth + 'px';
             item.style.height = itemHeight + 'px';
 
             if (index < maxVisible) {
+                // Elementele care "prind" un loc pe ecran
                 item.style.opacity = "1";
                 const row = Math.floor(index / columns);
                 const col = index % columns;
                 item.style.transform = `translate3d(${col * itemWidth}px, ${row * itemHeight}px, 0)`;
             } else {
-                // Pozele care nu incap pe ecran (cum ar fi cartofii daca sunt la coada)
+                // Elementele extra (cele 4 care rămân "în rezervă") le ascundem sub ecran
                 item.style.opacity = "0";
                 item.style.transform = `translate3d(0, ${height + 100}px, 0)`;
             }
         });
     }
 
+    // Pornire inițială fără animație pentru a nu vedea pozele sărind la refresh
     window.addEventListener('load', () => updateLayout(false));
+    // Reajustare grilă la schimbarea dimensiunii ferestrei
     window.addEventListener('resize', () => updateLayout(false));
+    // Shuffle automat la fiecare 4 secunde
     setInterval(() => updateLayout(true), 4000);
 </script>
 

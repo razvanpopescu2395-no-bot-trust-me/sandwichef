@@ -657,6 +657,77 @@
             text-align: center;
             padding: 40px 20px;
         }
+        /* Stil nou inspirat de sectiunea Pizza */
+.menu-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(400px, 1fr)); /* Carduri mai late */
+    gap: 50px;
+    justify-items: center;
+}
+
+.menu-card-pizza-style {
+    background: transparent;
+    width: 100%;
+    max-width: 500px;
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+.card-image-large {
+    width: 100%;
+    height: auto;
+    margin-bottom: 20px;
+}
+
+.card-image-large img {
+    width: 100%;
+    border-radius: 10px; /* Margini usor rotunjite, fara contur ciudat */
+    object-fit: cover;
+}
+
+.item-number-circle {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 30px;
+    height: 30px;
+    border: 2px solid var(--primary-color);
+    border-radius: 50%;
+    color: var(--primary-color);
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+.item-title-red {
+    color: var(--primary-color);
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 900;
+    font-size: 1.4rem;
+    text-transform: uppercase;
+    margin-bottom: 10px;
+}
+
+.item-ingredients-simple {
+    font-size: 0.95rem;
+    color: #666;
+    margin-bottom: 10px;
+    padding: 0 20px;
+}
+
+.item-price-red {
+    color: var(--primary-color);
+    font-family: 'Permanent Marker', cursive;
+    font-size: 1.6rem;
+    margin-bottom: 5px;
+}
+
+.item-weight-simple {
+    font-size: 0.8rem;
+    color: #999;
+}
+
+/* Eliminam vechile stiluri de card care nu se mai potrivesc */
+.menu-card { box-shadow: none; border: none; background: none; }
 
         /* ========================================================
            RESPONSIVE PENTRU MOBIL 
@@ -803,296 +874,209 @@
 </header>
 
 <section id="meniu" class="section-container section-light">
-        <div class="content-wrapper">
-            <h2 class="category-title">Sandwichuri</h2>
-            <div class="menu-grid">
-                
-                <div class="menu-card">
-                    <div class="card-image"><img src="Image/morning-bacon.jpeg" alt="Morning Sandwich Bacon" loading="lazy"></div>
-                    <div class="card-content">
-                        <div class="card-header">
-                            <div class="item-title"><span class="item-number">1.</span> Morning Sandwichef Bacon</div>
-                            <div class="item-price">23 RON</div>
-                        </div>
-                        <div class="item-details">260 G</div>
-                        <ul class="item-ingredients-list">
-                            <li><span class="emoji">🥖</span> Chifla 80g</li>
-                            <li><span class="emoji">🥚</span> Ou 60g</li>
-                            <li><span class="emoji">🍅</span> Rosii 40g</li>
-                            <li><span class="emoji">🥓</span> Bacon 40g</li>
-                            <li><span class="emoji">🧀</span> Cedar 20g</li>
-                            <li><span class="emoji">🥬</span> Rucola 13g</li>
-                            <li><span class="emoji">🫒</span> Ulei masline 5g</li>
-                            <li><span class="emoji">🧂</span> Sare 2g</li>
-                        </ul>
-                    </div>
+    <div class="content-wrapper">
+        <h2 class="category-title">Sandwichuri</h2>
+        <div class="menu-grid">
+            
+            <div class="menu-card-pizza-style">
+                <div class="card-image-large">
+                    <img src="Image/morning-bacon.jpeg" alt="Morning Sandwich Bacon">
                 </div>
-
-                <div class="menu-card">
-                    <div class="card-image"><img src="Image/bagheta-fresh.jpeg" alt="Bagheta Fresh" loading="lazy"></div>
-                    <div class="card-content">
-                        <div class="card-header">
-                            <div class="item-title"><span class="item-number">2.</span> Bagheta Fresh</div>
-                            <div class="item-price">28 RON</div>
-                        </div>
-                        <div class="item-details">360 G</div>
-                        <ul class="item-ingredients-list">
-                            <li><span class="emoji">🥖</span> Bagheta 160g</li>
-                            <li><span class="emoji">🧀</span> Crema branza 65g</li>
-                            <li><span class="emoji">🍅</span> Rosii 60g</li>
-                            <li><span class="emoji">🍗</span> Sunca pui 40g</li>
-                            <li><span class="emoji">🧀</span> Branza topita 30g</li>
-                            <li><span class="emoji">🥬</span> Baby spanac 15g</li>
-                        </ul>
-                    </div>
-                </div>
-
-                <div class="menu-card">
-                    <div class="card-image"><img src="Image/sandwich-snitel.jpeg" alt="Sandwich cu Snitel" style="filter: grayscale(10%);" loading="lazy"></div>
-                    <div class="card-content">
-                        <div class="card-header">
-                            <div class="item-title"><span class="item-number">3.</span> Sandwich cu Snitel</div>
-                            <div class="item-price">20 RON</div>
-                        </div>
-                        <div class="item-details">250 G</div>
-                        <ul class="item-ingredients-list">
-                            <li><span class="emoji">🥖</span> Chifla 80g</li>
-                            <li><span class="emoji">🍗</span> Snitel pui 75g</li>
-                            <li><span class="emoji">🥣</span> Sosul casei 40g</li>
-                            <li><span class="emoji">🍅</span> Rosii 40g</li>
-                            <li><span class="emoji">🥗</span> Salata iceberg 15g</li>
-                        </ul>
-                    </div>
-                </div>
-
-                <div class="menu-card">
-                    <div class="card-image"><img src="Image/wrap-crispy.jpeg" alt="Wrap Crispy" loading="lazy"></div>
-                    <div class="card-content">
-                        <div class="card-header">
-                            <div class="item-title"><span class="item-number">4.</span> Wrap Crispy</div>
-                            <div class="item-price">23 RON</div>
-                        </div>
-                        <div class="item-details">330 G</div>
-                        <ul class="item-ingredients-list">
-                            <li><span class="emoji">🍗</span> Pui crispy 100g</li>
-                            <li><span class="emoji">🫓</span> Tortilla 90g</li>
-                            <li><span class="emoji">🍅</span> Rosii 70g</li>
-                            <li><span class="emoji">🥣</span> Sosul casei 40g</li>
-                            <li><span class="emoji">🥗</span> Salata iceberg 30g</li>
-                        </ul>
-                    </div>
-                </div>
-
-                <div class="menu-card">
-                    <div class="card-image"><img src="Image/sandwich-salam-picant.jpeg" alt="Sandwich Salam Picant" loading="lazy"></div>
-                    <div class="card-content">
-                        <div class="card-header">
-                            <div class="item-title"><span class="item-number">5.</span> Sandwich cu Salam Picant</div>
-                            <div class="item-price">28 RON</div>
-                        </div>
-                        <div class="item-details">300 G</div>
-                        <ul class="item-ingredients-list">
-                            <li><span class="emoji">🥖</span> Bagheta 160g</li>
-                            <li><span class="emoji">🥓</span> Salam picant 35g</li>
-                            <li><span class="emoji">🥓</span> Salam chorizo 35g</li>
-                            <li><span class="emoji">🧀</span> Branza topita 35g</li>
-                            <li><span class="emoji">🥗</span> Salata asortata 25g</li>
-                            <li><span class="emoji">🫒</span> Ulei masline 5g</li>
-                            <li><span class="emoji">🌶️</span> Fulgi de chili 5g</li>
-                        </ul>
-                    </div>
-                </div>
-
-                <div class="menu-card">
-                    <div class="card-image"><img src="Image/sandwich-bacon.jpeg" alt="Sandwich Bacon" loading="lazy"></div>
-                    <div class="card-content">
-                        <div class="card-header">
-                            <div class="item-title"><span class="item-number">6.</span> Sandwich cu Bacon</div>
-                            <div class="item-price">30 RON</div>
-                        </div>
-                        <div class="item-details">390 G</div>
-                        <ul class="item-ingredients-list">
-                            <li><span class="emoji">🥖</span> Bagheta 160g</li>
-                            <li><span class="emoji">🥓</span> Bacon 80g</li>
-                            <li><span class="emoji">🍅</span> Rosii 40g</li>
-                            <li><span class="emoji">🫑</span> Ardei copt 40g</li>
-                            <li><span class="emoji">🧀</span> Cedar 30g</li>
-                            <li><span class="emoji">🧀</span> Branza topita 30g</li>
-                            <li><span class="emoji">🥬</span> Rucola 10g</li>
-                        </ul>
-                    </div>
-                </div>
-
-                <div class="menu-card">
-                    <div class="card-image"><img src="Image/smashed-vita.jpeg" alt="Smashed Sandwich Vita" loading="lazy"></div>
-                    <div class="card-content">
-                        <div class="card-header">
-                            <div class="item-title"><span class="item-number">7.</span> Smashed Sandwich Vita</div>
-                            <div class="item-price">28 RON</div>
-                        </div>
-                        <div class="item-details">245 G</div>
-                        <ul class="item-ingredients-list">
-                            <li><span class="emoji">🥩</span> Carne tocata vita 90g</li>
-                            <li><span class="emoji">🥖</span> Chifla 70g</li>
-                            <li><span class="emoji">🥣</span> Sosul casei 30g</li>
-                            <li><span class="emoji">🧀</span> Cedar 30g</li>
-                            <li><span class="emoji">🥒</span> Castraveti murati 15g</li>
-                            <li><span class="emoji">🧅</span> Ceapa crispy 10g</li>
-                        </ul>
-                    </div>
+                <div class="card-content-centered">
+                    <div class="item-number-circle">1</div>
+                    <h3 class="item-title-red">MORNING SANDWICHEF BACON</h3>
+                    <p class="item-ingredients-simple">Chifla, Ou, Rosii, Bacon, Cedar, Rucola, Ulei masline, Sare</p>
+                    <div class="item-price-red">23 RON</div>
+                    <div class="item-weight-simple">260g</div>
                 </div>
             </div>
 
-            <h2 class="category-title" style="margin-top: 40px;">Paniniuri</h2>
-            <div class="menu-grid">
-                <div class="menu-card">
-                    <div class="card-image"><img src="Image/panini-pollo.jpeg" alt="Panini Pollo" loading="lazy"></div>
-                    <div class="card-content">
-                        <div class="card-header">
-                            <div class="item-title"><span class="item-number">8.</span> Panini Pollo</div>
-                            <div class="item-price">40 RON</div>
-                        </div>
-                        <div class="item-details">530 G</div>
-                        <ul class="item-ingredients-list">
-                            <li><span class="emoji">🍗</span> Snitel piept de pui 180g</li>
-                            <li><span class="emoji">🥖</span> Schiacciata 180g</li>
-                            <li><span class="emoji">🥫</span> Sos de rosii 60g</li>
-                            <li><span class="emoji">🧀</span> Mozzarella 50g</li>
-                            <li><span class="emoji">🌿</span> Pesto 30g</li>
-                            <li><span class="emoji">🥬</span> Rucola 15g</li>
-                            <li><span class="emoji">🧀</span> Parmezan 15g</li>
-                        </ul>
-                    </div>
+            <div class="menu-card-pizza-style">
+                <div class="card-image-large">
+                    <img src="Image/bagheta-fresh.jpeg" alt="Bagheta Fresh">
                 </div>
-
-                <div class="menu-card">
-                    <div class="card-image"><img src="Image/panini-pofta-mare.jpeg" alt="Panini Pofta Mare Frate" loading="lazy"></div>
-                    <div class="card-content">
-                        <div class="card-header">
-                            <div class="item-title"><span class="item-number">9.</span> Panini Pofta Mare, Frate</div>
-                            <div class="item-price">42 RON</div>
-                        </div>
-                        <div class="item-details">545 G</div>
-                        <ul class="item-ingredients-list">
-                            <li><span class="emoji">🍗</span> Snitel piept de pui 180g</li>
-                            <li><span class="emoji">🥖</span> Schiacciata 180g</li>
-                            <li><span class="emoji">🧀</span> Cedar 60g</li>
-                            <li><span class="emoji">🍟</span> Cartofi prajiti 40g</li>
-                            <li><span class="emoji">🥣</span> Sos de ceapa 30g</li>
-                            <li><span class="emoji">🥗</span> Salata asortata 30g</li>
-                            <li><span class="emoji">🥣</span> Sosul casei 25g</li>
-                        </ul>
-                    </div>
-                </div>
-
-                <div class="menu-card">
-                    <div class="card-image"><img src="Image/panini-mamma-mia.jpeg" alt="Panini Mamamia" loading="lazy"></div>
-                    <div class="card-content">
-                        <div class="card-header">
-                            <div class="item-title"><span class="item-number">10.</span> Panini Mamamia</div>
-                            <div class="item-price">35 RON</div>
-                        </div>
-                        <div class="item-details">515 G</div>
-                        <ul class="item-ingredients-list">
-                            <li><span class="emoji">🥖</span> Schiacciata 180g</li>
-                            <li><span class="emoji">🍖</span> Mortadella 180g</li>
-                            <li><span class="emoji">🧀</span> Crema de branza cu gorgonzola 75g</li>
-                            <li><span class="emoji">🍅</span> Rosii uscate 40g</li>
-                            <li><span class="emoji">🌿</span> Pesto 20g</li>
-                            <li><span class="emoji">🥬</span> Rucola 15g</li>
-                            <li><span class="emoji">🫒</span> Ulei masline 5g</li>
-                        </ul>
-                    </div>
-                </div>
-
-                <div class="menu-card">
-                    <div class="card-image"><img src="Image/panini-picante.jpeg" alt="Panini Picante" loading="lazy"></div>
-                    <div class="card-content">
-                        <div class="card-header">
-                            <div class="item-title"><span class="item-number">11.</span> Panini Picante</div>
-                            <div class="item-price">35 RON</div>
-                        </div>
-                        <div class="item-details">420 G</div>
-                        <ul class="item-ingredients-list">
-                            <li><span class="emoji">🥖</span> Schiacciata 180g</li>
-                            <li><span class="emoji">🥓</span> Salam ventricina 80g</li>
-                            <li><span class="emoji">🧀</span> Crema de branza 70g</li>
-                            <li><span class="emoji">🍅</span> Rosii 70g</li>
-                            <li><span class="emoji">🥬</span> Rucola 15g</li>
-                            <li><span class="emoji">🥣</span> Crema de otet balsamic 5g</li>
-                        </ul>
-                    </div>
-                </div>
-
-                <div class="menu-card">
-                    <div class="card-image"><img src="Image/panini-primavera.jpeg" alt="Panini Primavera" loading="lazy"></div>
-                    <div class="card-content">
-                        <div class="card-header">
-                            <div class="item-title"><span class="item-number">12.</span> Panini Primavera</div>
-                            <div class="item-price">38 RON</div>
-                        </div>
-                        <div class="item-details">490 G</div>
-                        <ul class="item-ingredients-list">
-                            <li><span class="emoji">🥖</span> Schiacciata 180g</li>
-                            <li><span class="emoji">🍗</span> Snitel piept de pui 180g</li>
-                            <li><span class="emoji">🍅</span> Rosii 50g</li>
-                            <li><span class="emoji">🧄</span> Aioli 40g</li>
-                            <li><span class="emoji">🌿</span> Chimichurri 20g</li>
-                            <li><span class="emoji">🥬</span> Rucola 15g</li>
-                            <li><span class="emoji">🧂</span> Piper 3g</li>
-                            <li><span class="emoji">🧂</span> Sare 2g</li>
-                        </ul>
-                    </div>
-                </div>
-
-                <div class="menu-card">
-                    <div class="card-image"><img src="Image/panini-napoli.jpeg" alt="Panini Napoli" loading="lazy"></div>
-                    <div class="card-content">
-                        <div class="card-header">
-                            <div class="item-title"><span class="item-number">13.</span> Panini Napoli</div>
-                            <div class="item-price">38 RON</div>
-                        </div>
-                        <div class="item-details">520 G</div>
-                        <ul class="item-ingredients-list">
-                            <li><span class="emoji">🥖</span> Schiacciata 180g</li>
-                            <li><span class="emoji">🥓</span> Salam napoli 150g</li>
-                            <li><span class="emoji">🧀</span> Crema branza 75g</li>
-                            <li><span class="emoji">🍅</span> Rosii 45g</li>
-                            <li><span class="emoji">🧀</span> Mozzarella 40g</li>
-                            <li><span class="emoji">🥗</span> Salata asortata 30g</li>
-                            <li><span class="emoji">🫒</span> Masline 10g</li>
-                        </ul>
-                    </div>
+                <div class="card-content-centered">
+                    <div class="item-number-circle">2</div>
+                    <h3 class="item-title-red">BAGHETA FRESH</h3>
+                    <p class="item-ingredients-simple">Bagheta, Crema branza, Rosii, Sunca pui, Branza topita, Baby spanac</p>
+                    <div class="item-price-red">28 RON</div>
+                    <div class="item-weight-simple">360g</div>
                 </div>
             </div>
 
-            <h2 class="category-title" style="margin-top: 40px;">Extra & Racoritoare</h2>
-            <div class="menu-grid" style="justify-content: center;">
-                <div class="menu-card" style="max-width: 400px; margin: auto;">
-                    <div class="card-image" style="height: 250px;"><img src="Image/cartofi-prajiti.jpeg" alt="Cartofi Prajiti" loading="lazy"></div>
-                    <div class="card-content">
-                        <div class="card-header">
-                            <div class="item-title"><span class="item-number">14.</span> Cartofi Prajiti</div>
-                            <div class="item-price">8 RON</div>
-                        </div>
-                        <div class="item-details">120 G</div>
-                        <ul class="item-ingredients-list">
-                            <li><span class="emoji">🍟</span> Cartofi 119g</li>
-                            <li><span class="emoji">🧂</span> Sare 1g</li>
-                        </ul>
-                    </div>
+            <div class="menu-card-pizza-style">
+                <div class="card-image-large">
+                    <img src="Image/panini-pollo.jpeg" alt="Sandwich cu Snitel">
+                </div>
+                <div class="card-content-centered">
+                    <div class="item-number-circle">3</div>
+                    <h3 class="item-title-red">SANDWICH CU SNITEL</h3>
+                    <p class="item-ingredients-simple">Chifla, Snitel pui, Sosul casei, Rosii, Salata iceberg</p>
+                    <div class="item-price-red">20 RON</div>
+                    <div class="item-weight-simple">250g</div>
                 </div>
             </div>
 
-            <div class="drinks-list" style="margin-top: 30px;">
-                <div class="drink-item"><span>🥤 Coca Cola</span> <span>7 RON</span></div>
-                <div class="drink-item"><span>🍊 Fanta</span> <span>7 RON</span></div>
-                <div class="drink-item"><span>🍋 Sprite</span> <span>7 RON</span></div>
-                <div class="drink-item"><span>💧 Apa Plata</span> <span>6 RON</span></div>
-                <div class="drink-item"><span>🫧 Apa Minerala</span> <span>6 RON</span></div>
+            <div class="menu-card-pizza-style">
+                <div class="card-image-large">
+                    <img src="Image/wrap-crispy.jpeg" alt="Wrap Crispy">
+                </div>
+                <div class="card-content-centered">
+                    <div class="item-number-circle">4</div>
+                    <h3 class="item-title-red">WRAP CRISPY</h3>
+                    <p class="item-ingredients-simple">Pui crispy, Tortilla, Rosii, Sosul casei, Salata iceberg</p>
+                    <div class="item-price-red">23 RON</div>
+                    <div class="item-weight-simple">330g</div>
+                </div>
+            </div>
+
+            <div class="menu-card-pizza-style">
+                <div class="card-image-large">
+                    <img src="Image/sandwich-salam-picant.jpeg" alt="Sandwich cu Salam Picant">
+                </div>
+                <div class="card-content-centered">
+                    <div class="item-number-circle">5</div>
+                    <h3 class="item-title-red">SANDWICH CU SALAM PICANT</h3>
+                    <p class="item-ingredients-simple">Bagheta, Salam picant, Salam chorizo, Branza topita, Salata asortata, Ulei masline, Fulgi de chili</p>
+                    <div class="item-price-red">28 RON</div>
+                    <div class="item-weight-simple">300g</div>
+                </div>
+            </div>
+
+            <div class="menu-card-pizza-style">
+                <div class="card-image-large">
+                    <img src="Image/sandwich-bacon.jpeg" alt="Sandwich cu Bacon">
+                </div>
+                <div class="card-content-centered">
+                    <div class="item-number-circle">6</div>
+                    <h3 class="item-title-red">SANDWICH CU BACON</h3>
+                    <p class="item-ingredients-simple">Bagheta, Bacon, Rosii, Ardei copt, Cedar, Branza topita, Rucola</p>
+                    <div class="item-price-red">30 RON</div>
+                    <div class="item-weight-simple">390g</div>
+                </div>
+            </div>
+
+            <div class="menu-card-pizza-style">
+                <div class="card-image-large">
+                    <img src="Image/smashed-vita.jpeg" alt="Smashed Sandwich Vita">
+                </div>
+                <div class="card-content-centered">
+                    <div class="item-number-circle">7</div>
+                    <h3 class="item-title-red">SMASHED SANDWICH VITA</h3>
+                    <p class="item-ingredients-simple">Carne tocata vita, Chifla, Sosul casei, Cedar, Castraveti murati, Ceapa crispy</p>
+                    <div class="item-price-red">28 RON</div>
+                    <div class="item-weight-simple">245g</div>
+                </div>
             </div>
         </div>
-    </section>
+
+        <h2 class="category-title" style="margin-top: 60px;">Paniniuri</h2>
+        <div class="menu-grid">
+            
+            <div class="menu-card-pizza-style">
+                <div class="card-image-large">
+                    <img src="Image/panini-pollo.jpeg" alt="Panini Pollo">
+                </div>
+                <div class="card-content-centered">
+                    <div class="item-number-circle">8</div>
+                    <h3 class="item-title-red">PANINI POLLO</h3>
+                    <p class="item-ingredients-simple">Snitel piept de pui, Schiacciata, Sos de rosii, Mozzarella, Pesto, Rucola, Parmezan</p>
+                    <div class="item-price-red">40 RON</div>
+                    <div class="item-weight-simple">530g</div>
+                </div>
+            </div>
+
+            <div class="menu-card-pizza-style">
+                <div class="card-image-large">
+                    <img src="Image/panini-pofta-mare.jpeg" alt="Panini Pofta Mare Frate">
+                </div>
+                <div class="card-content-centered">
+                    <div class="item-number-circle">9</div>
+                    <h3 class="item-title-red">PANINI POFTA MARE, FRATE</h3>
+                    <p class="item-ingredients-simple">Snitel piept de pui, Schiacciata, Cedar, Cartofi prajiti, Sos de ceapa, Salata asortata, Sosul casei</p>
+                    <div class="item-price-red">42 RON</div>
+                    <div class="item-weight-simple">545g</div>
+                </div>
+            </div>
+
+            <div class="menu-card-pizza-style">
+                <div class="card-image-large">
+                    <img src="Image/panini-mamma-mia.jpeg" alt="Panini Mamamia">
+                </div>
+                <div class="card-content-centered">
+                    <div class="item-number-circle">10</div>
+                    <h3 class="item-title-red">PANINI MAMAMIA</h3>
+                    <p class="item-ingredients-simple">Schiacciata, Mortadella, Crema de branza cu gorgonzola, Rosii uscate, Pesto, Rucola, Ulei masline</p>
+                    <div class="item-price-red">35 RON</div>
+                    <div class="item-weight-simple">515g</div>
+                </div>
+            </div>
+
+            <div class="menu-card-pizza-style">
+                <div class="card-image-large">
+                    <img src="Image/panini-picante.jpeg" alt="Panini Picante">
+                </div>
+                <div class="card-content-centered">
+                    <div class="item-number-circle">11</div>
+                    <h3 class="item-title-red">PANINI PICANTE</h3>
+                    <p class="item-ingredients-simple">Schiacciata, Salam ventricina, Crema de branza, Rosii, Rucola, Crema de otet balsamic</p>
+                    <div class="item-price-red">35 RON</div>
+                    <div class="item-weight-simple">420g</div>
+                </div>
+            </div>
+
+            <div class="menu-card-pizza-style">
+                <div class="card-image-large">
+                    <img src="Image/panini-primavera.jpeg" alt="Panini Primavera">
+                </div>
+                <div class="card-content-centered">
+                    <div class="item-number-circle">12</div>
+                    <h3 class="item-title-red">PANINI PRIMAVERA</h3>
+                    <p class="item-ingredients-simple">Schiacciata, Snitel piept de pui, Rosii, Aioli, Chimichurri, Rucola, Piper, Sare</p>
+                    <div class="item-price-red">38 RON</div>
+                    <div class="item-weight-simple">490g</div>
+                </div>
+            </div>
+
+            <div class="menu-card-pizza-style">
+                <div class="card-image-large">
+                    <img src="Image/panini-napoli.jpeg" alt="Panini Napoli">
+                </div>
+                <div class="card-content-centered">
+                    <div class="item-number-circle">13</div>
+                    <h3 class="item-title-red">PANINI NAPOLI</h3>
+                    <p class="item-ingredients-simple">Schiacciata, Salam napoli, Crema branza, Rosii, Mozzarella, Salata asortata, Masline</p>
+                    <div class="item-price-red">38 RON</div>
+                    <div class="item-weight-simple">520g</div>
+                </div>
+            </div>
+        </div>
+
+        <h2 class="category-title" style="margin-top: 60px;">Extra</h2>
+        <div class="menu-grid">
+            <div class="menu-card-pizza-style">
+                <div class="card-image-large">
+                    <img src="Image/cartofi-prajiti.jpeg" alt="Cartofi Prajiti">
+                </div>
+                <div class="card-content-centered">
+                    <div class="item-number-circle">14</div>
+                    <h3 class="item-title-red">CARTOFI PRAJITI</h3>
+                    <p class="item-ingredients-simple">Cartofi, Sare</p>
+                    <div class="item-price-red">8 RON</div>
+                    <div class="item-weight-simple">120g</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="drinks-list" style="margin-top: 50px;">
+            <div class="drink-item"><span>🥤 Coca Cola</span> <span>7 RON</span></div>
+            <div class="drink-item"><span>🍊 Fanta</span> <span>7 RON</span></div>
+            <div class="drink-item"><span>🍋 Sprite</span> <span>7 RON</span></div>
+            <div class="drink-item"><span>💧 Apa Plata</span> <span>6 RON</span></div>
+            <div class="drink-item"><span>🫧 Apa Minerala</span> <span>6 RON</span></div>
+        </div>
+    </div>
+</section>
 
     <section id="despre" class="section-container section-dark">
         <div class="content-wrapper text-box">

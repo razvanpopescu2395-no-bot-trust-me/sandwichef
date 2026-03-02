@@ -8,6 +8,8 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;800;900&family=Permanent+Marker&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@900&family=Bebas+Neue&family=Oswald:wght@700&family=Anton&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@900&family=Bonheur+Royale&family=Bebas+Neue&display=swap" rel="stylesheet">
     
     <link rel="icon" type="image/png" href="Image/logo.png">
     
@@ -314,7 +316,7 @@
 
         .curved-text {
             fill: var(--primary-color);
-            font-family: 'Permanent Marker', cursive;
+            font-family: 'Montserrat', sans-serif;
             font-size: 46px;
             font-weight: bold;
             text-transform: uppercase;
@@ -375,28 +377,30 @@
             margin: 0 auto;
         }
 
-        .category-title {
-            text-align: center;
-            font-family: 'Permanent Marker', cursive;
-            font-size: 3rem;
-            color: var(--secondary-color);
-            margin: 0 auto 50px auto;
-            display: block; 
-        }
+.category-title {
+    text-align: center;
+    font-family: 'Montserrat', sans-serif; 
+    font-weight: 900; 
+    font-size: 2.8rem;
+    color: var(--secondary-color);
+    text-transform: uppercase;
+    /* Am redus spațierea la -1px sau -2px pentru un look mai "solid" */
+    letter-spacing: 1px; 
+    margin: 0 auto 40px auto;
+    display: block;
+    line-height: 1; /* Apropie rândurile dacă titlul se rupe pe două linii */
+}
 
-        .section-dark .category-title {
-            color: white;
-        }
-        
-        .category-title::after {
-            content: '';
-            display: block;
-            width: 120px; 
-            height: 4px;
-            background: var(--primary-color);
-            margin: 10px auto 0 auto;
-            border-radius: 2px;
-        }
+/* Linia de sub titlu devine mai scurtă și mai groasă pentru a se potrivi cu noul stil compact */
+.category-title::after {
+    content: '';
+    display: block;
+    width: 60px; 
+    height: 8px;
+    background: var(--primary-color);
+    margin: 10px auto 0 auto;
+    border-radius: 0px; /* Linii drepte pentru un aspect mai tăios */
+}
 
         /* --- GRID PENTRU MENIU --- */
         .menu-grid {
@@ -467,7 +471,7 @@
         }
 
         .item-price {
-            font-family: 'Permanent Marker', cursive;
+            font-family: 'Montserrat', sans-serif;
             color: var(--primary-color);
             font-size: 1.5rem;
             margin-left: 15px;
@@ -716,7 +720,7 @@
 
 .item-price-red {
     color: var(--primary-color);
-    font-family: 'Permanent Marker', cursive;
+    font-family: 'Montserrat', sans-serif;
     font-size: 1.6rem;
     margin-bottom: 5px;
 }
@@ -724,6 +728,133 @@
 .item-weight-simple {
     font-size: 0.8rem;
     color: #999;
+}
+
+/* Stiluri Sectiune Catering */
+.catering-features {
+    display: flex;
+    justify-content: center;
+    gap: 40px;
+    margin-bottom: 40px;
+    flex-wrap: wrap;
+}
+
+.feature-item {
+    text-align: center;
+    flex: 1;
+    min-width: 150px;
+}
+
+.feature-emoji {
+    font-size: 2.5rem;
+    display: block;
+    margin-bottom: 10px;
+}
+
+.feature-item h4 {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 800;
+    text-transform: uppercase;
+    font-size: 0.9rem;
+    letter-spacing: 1px;
+}
+
+.catering-contact-box {
+    background: rgba(255, 255, 255, 0.05);
+    padding: 30px;
+    border-radius: 15px;
+    border: 1px dashed var(--primary-color);
+    display: inline-block;
+    width: 100%;
+    max-width: 600px;
+}
+
+.catering-contact-box p {
+    font-weight: 600;
+    margin-bottom: 20px;
+    font-size: 1.1rem;
+}
+
+.catering-phones {
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    flex-wrap: wrap;
+}
+
+.catering-link {
+    color: var(--primary-color);
+    text-decoration: none;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 1.5rem;
+    transition: transform 0.3s ease;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.catering-link:hover {
+    transform: scale(1.05);
+    color: white;
+}
+
+.phone-icon {
+    font-size: 1.2rem;
+}
+
+/* Ajustare mobil pentru catering */
+@media (max-width: 600px) {
+    .catering-phones {
+        flex-direction: column;
+        gap: 15px;
+    }
+    .catering-link {
+        font-size: 1.3rem;
+    }
+}
+/* Linii separatoare fine în navbar */
+.nav-links li:not(:last-child)::after {
+    content: "|";
+    margin-left: 20px;
+    color: rgba(255, 255, 255, 0.3); /* Alb transparent pe fundalul dark al header-ului */
+    font-weight: 200;
+    font-size: 0.8rem;
+    pointer-events: none;
+}
+
+/* Ajustare culoare separatoare când navbar-ul are fundal alb (la scroll) */
+.navbar.scrolled .nav-links li:not(:last-child)::after {
+    color: rgba(0, 0, 0, 0.1); /* Gri foarte fin pe fundalul alb */
+}
+
+/* Ne asigurăm că link-urile și separatoarele stau aliniate perfect */
+.nav-links {
+    align-items: center;
+    gap: 20px; /* Reducem puțin gap-ul deoarece avem marginea de la after */
+}
+
+.card-image-large {
+    width: 100%;
+    /* Fixăm înălțimea pentru toate pozele (ex: 320px pentru un aspect echilibrat) */
+    height: 320px; 
+    margin-bottom: 25px;
+    overflow: hidden; /* Taie ce iese în afară */
+    border-radius: 12px;
+}
+
+.card-image-large img {
+    width: 100%;
+    height: 100%; /* Forțează imaginea să ocupe tot spațiul de 320px */
+    object-fit: cover; /* Esențial: decupează imaginea inteligent fără să o lungească */
+    display: block;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+}
+
+/* Ajustare pentru ecrane mici */
+@media (max-width: 600px) {
+    .card-image-large {
+        height: 250px; /* O idee mai mică pe mobil pentru a nu ocupa tot ecranul */
+    }
 }
 
 /* Eliminam vechile stiluri de card care nu se mai potrivesc */
@@ -815,17 +946,19 @@
 </head>
 <body>
 
-    <nav class="navbar">
-        <ul class="nav-links">
-            <li><a href="#meniu">Meniu</a></li>
-            <li><a href="#despre">Despre noi</a></li>
-        </ul>
-        <a href="#acasa" class="nav-logo">Sandwichef</a>
-        <ul class="nav-links">
-            <li><a href="#livrari">Livrari</a></li>
-            <li><a href="#contact">Contact</a></li>
-        </ul>
-    </nav>
+<nav class="navbar">
+    <ul class="nav-links">
+        <li><a href="#meniu">Meniu</a></li>
+        <li><a href="#catering">Evenimente & Office</a></li>
+    </ul>
+
+    <a href="#acasa" class="nav-logo">Sandwichef</a>
+
+    <ul class="nav-links">
+        <li><a href="#livrari">Comandă Acum</a></li>
+        <li><a href="#contact">Contact</a></li>
+    </ul>
+</nav>
 
 <header id="acasa">
     <div class="hero-gallery-container" id="heroGallery">
@@ -1079,6 +1212,41 @@
         </div>
     </div>
 </section>
+<section id="catering" class="section-container section-dark">
+    <div class="content-wrapper text-box">
+        <h2 class="category-title">Catering si venimente</h2>
+        <p style="margin-bottom: 30px;">
+            Transformă orice eveniment într-un festin urban! Fie că este vorba despre o petrecere privată, un eveniment corporate sau prânzul zilnic la birou, <strong>Sandwichef</strong> aduce gustul autentic direct la locația ta.
+        </p>
+        
+        <div class="catering-features">
+            <div class="feature-item">
+                <span class="feature-emoji">🎉</span>
+                <h4>Evenimente Private</h4>
+            </div>
+            <div class="feature-item">
+                <span class="feature-emoji">💼</span>
+                <h4>Corporate Lunch</h4>
+            </div>
+            <div class="feature-item">
+                <span class="feature-emoji">🥪</span>
+                <h4>Meniuri Personalizate</h4>
+            </div>
+        </div>
+
+        <div class="catering-contact-box">
+            <p>Pentru oferte personalizate și colaborări, contactează-ne:</p>
+            <div class="catering-phones">
+                <a href="tel:0769409493" class="catering-link">
+                    <span class="phone-icon">📞</span> 0769 409 493
+                </a>
+                <a href="tel:0762690667" class="catering-link">
+                    <span class="phone-icon">📞</span> 0762 690 667
+                </a>
+            </div>
+        </div>
+    </div>
+</section>
 
     <section id="despre" class="section-container section-dark">
         <div class="content-wrapper text-box">
@@ -1132,7 +1300,7 @@
                 <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2854.1385852714616!2d23.78951687756116!3d44.327656571078236!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x4752d700794a292d%3A0xeae5efd854a9e4a4!2sSandwichef!5e0!3m2!1sen!2sro!4v1771606955277!5m2!1sen!2sro" width="100%" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
             </div>
 
-            <h3 style="font-family: 'Permanent Marker', cursive; font-size: 2.2rem; margin-top: 50px; color: var(--primary-color);">Ce spun clientii nostri</h3>
+            <h3 style="font-family: 'Montserrat', sans-serif; font-size: 2.2rem; margin-top: 50px; color: var(--primary-color);">Ce spun clientii nostri</h3>
             
             <div class="reviews-grid">
                 <div class="review-card">
@@ -1157,7 +1325,7 @@
     </section>
 
     <footer>
-        <h3 style="font-family: 'Permanent Marker', cursive; font-size: 1.5rem; color: var(--primary-color); margin-bottom: 10px;">Sandwichef România</h3>
+        <h3 style="font-family: 'Montserrat', sans-serif; font-size: 1.5rem; color: var(--primary-color); margin-bottom: 10px;">Sandwichef România</h3>
         <p>Ingrediente proaspete, gust autentic.</p>
         <p style="font-size: 0.8rem; color: #888; margin-top: 20px;">© 2026 Toate drepturile rezervate.</p>
     </footer>

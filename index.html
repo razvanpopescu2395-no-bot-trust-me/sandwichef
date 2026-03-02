@@ -793,6 +793,12 @@
     font-size: 0.9rem;
     letter-spacing: 1px;
 }
+.active-link {
+    color: var(--primary-color) !important;
+}
+.active-link::after {
+    width: 100% !important; /* Forțează linia de sub link să apară */
+}
 
 .catering-contact-box {
     background: rgba(255, 255, 255, 0.05);
@@ -831,6 +837,12 @@
 .catering-link:hover {
     transform: scale(1.05);
     color: white;
+}
+
+.menu-card-pizza-style {
+    background: rgba(255, 255, 255, 0.7);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.3);
 }
 
 .phone-icon {
@@ -1416,7 +1428,73 @@
     window.addEventListener('resize', () => updateLayout(false));
     // Shuffle automat la fiecare 4 secunde
     setInterval(() => updateLayout(true), 4000);
+
+    ///
+    const observerOptions = {
+        threshold: 0.1
+    };
+    
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.style.opacity = "1";
+                entry.target.style.transform = "translateY(0)";
+            }
+        });
+    }, observerOptions);
+    
+    document.querySelectorAll('.menu-card-pizza-style').forEach(card => {
+        card.style.opacity = "0";
+        card.style.transform = "translateY(30px)";
+        card.style.transition = "all 0.6s ease-out";
+        observer.observe(card);
+    });
+    ///
+    const animatePrices = () => {
+        const prices = document.querySelectorAll('.item-price-red');
+        prices.forEach(price => {
+            const target = +price.innerText.split(' ')[0];
+            const count = +price.innerText.split(' ')[0]; // Prevenim re-animarea
+            
+            let current = 0;
+            const increment = target / 50;
+    
+            const updateCount = () => {
+                if (current < target) {
+                    current += increment;
+                    price.innerHTML = `${Math.ceil(current)} RON`;
+                    setTimeout(updateCount, 20);
+                } else {
+                    price.innerHTML = `${target} RON`;
+                }
+            };
+            updateCount();
+        });
+    };
+// Poți apela această funcție tot prin IntersectionObserver când meniul devine vizibil
+    window.addEventListener('scroll', () => {
+        let current = "";
+        const sections = document.querySelectorAll('section');
+        const navLi = document.querySelectorAll('.nav-links li a');
+    
+        sections.forEach(section => {
+            const sectionTop = section.offsetTop;
+            const sectionHeight = section.clientHeight;
+            if (pageYOffset >= (sectionTop - 150)) {
+                current = section.getAttribute('id');
+            }
+        });
+    
+        navLi.forEach(a => {
+            a.classList.remove('active-link');
+            if (a.getAttribute('href').includes(current)) {
+                a.classList.add('active-link');
+            }
+        });
+    });
 </script>
+
+    
 
 </body>
 </html>

@@ -241,7 +241,7 @@ body.no-scroll {
     color: white;
     position: relative;
     overflow: hidden;
-    background: url('Image/morning-bacon.jpeg') no-repeat center center/cover;
+    background: url('Image/hero-bg.jpeg') no-repeat center center/cover;
 }
 
 .hero-overlay {
@@ -1437,8 +1437,8 @@ footer {
 .nav-grid {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
-    gap: 30px;
-    max-width: 1200px;
+    gap: 60px;
+    max-width: 1734px;
     margin: 0 auto;
 }
 
@@ -1484,7 +1484,7 @@ footer {
     box-shadow: var(--shadow-soft);
     text-align: center;
     width: 80%;
-    max-width: 200px;
+    max-width: 280px;
 }
 
 .grid-btn-under:hover {

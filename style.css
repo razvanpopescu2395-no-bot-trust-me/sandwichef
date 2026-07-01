@@ -58,41 +58,43 @@ body.no-scroll {
     top: 0 !important;
     left: 0;
     width: 100%;
-    background-color: transparent; 
+    background-color: rgba(250, 246, 238, 0.75) !important; /* Semi-transparent Toasted Vanilla */
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
     z-index: 9999;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 20px 50px;
+    padding: 15px 50px;
     transition: all 0.4s cubic-bezier(0.2, 0.8, 0.2, 1); 
     -webkit-transform: translate3d(0,0,0);
+    border-bottom: 1px solid rgba(45, 31, 24, 0.08); /* Subtle dark brown border */
 }
 
 .navbar.scrolled {
-    background-color: rgba(255, 255, 255, 0.85) !important;
+    background-color: rgba(250, 246, 238, 0.9) !important; /* Slightly more solid on scroll */
     backdrop-filter: blur(12px);
     -webkit-backdrop-filter: blur(12px);
-    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1); 
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.05); 
     padding: 12px 50px;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.3);
+    border-bottom: 1px solid rgba(45, 31, 24, 0.15);
 }
 
 .nav-logo {
     font-family: 'Montserrat', sans-serif;
     font-size: 2rem;
-    color: #fff; 
+    color: var(--secondary-color) !important; /* Dark brown */
     text-decoration: none;
     font-weight: 900;
     text-transform: uppercase;
     letter-spacing: 2px;
     transition: all 0.3s ease;
-    text-shadow: 2px 4px 10px rgba(0,0,0,0.5);
+    text-shadow: none !important;
     padding: 5px 0;
 }
 
 .navbar.scrolled .nav-logo {
     color: var(--primary-color) !important;
-    text-shadow: none;
 }
 
 .nav-logo:hover {
@@ -176,13 +178,13 @@ body.no-scroll {
 
 .nav-links li a {
     text-decoration: none;
-    color: #fff; 
+    color: var(--secondary-color) !important; /* Dark brown */
     font-weight: 800;
     text-transform: uppercase;
     font-size: 0.9rem;
     letter-spacing: 1px;
     transition: color 0.3s ease;
-    text-shadow: 1px 1px 5px rgba(0,0,0,0.5);
+    text-shadow: none !important;
     position: relative;
     padding-bottom: 5px;
 }
@@ -204,7 +206,6 @@ body.no-scroll {
 
 .navbar.scrolled .nav-links li a {
     color: var(--secondary-color) !important;
-    text-shadow: none;
 }
 
 .navbar.scrolled .nav-links li a:hover {
@@ -213,7 +214,7 @@ body.no-scroll {
 
 /* --- HERO SECTION --- */
 #hero-section {
-    height: 100vh;
+    height: 75vh;
     width: 100vw;
     display: flex;
     flex-direction: column;
@@ -1028,7 +1029,7 @@ footer {
         position: absolute;
         height: 3px;
         width: 100%;
-        background: #fff;
+        background: var(--secondary-color);
         border-radius: 9px;
         opacity: 1;
         left: 0;
@@ -1108,7 +1109,7 @@ footer {
     /* Hero Adjustments for Mobile */
     #hero-section {
         height: auto;
-        min-height: 100vh;
+        min-height: 75vh;
         padding: 120px 20px 60px 20px;
         display: flex;
         flex-direction: column;

@@ -1150,6 +1150,12 @@ footer {
         color: var(--primary-color) !important;
     }
     
+    /* Faster scroll animations on mobile */
+    [data-aos] {
+        transition-duration: 300ms !important;
+        transition-delay: 0ms !important;
+    }
+    
     /* Hero Adjustments for Mobile */
     #hero-section {
         margin-top: 70px;

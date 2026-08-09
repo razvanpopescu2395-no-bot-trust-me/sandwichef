@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sandwichef - Meniu</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;500;600;700;800;900&family=Barlow:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400;1,500&family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Playfair+Display:ital,wght@0,600;0,700;0,800;1,600&display=swap" rel="stylesheet">
+    <link type="text/css" rel="stylesheet" href="https://fonts.googleapis.com/css?family=Google+Sans+Text:400&amp;text=%E2%86%90%E2%86%92%E2%86%91%E2%86%93&amp;lang=en">
+    <link type="text/css" rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Google+Sans:400,500,700|Google+Sans+Text:400,500,700&amp;lang=en">
+    
+    <link rel="icon" type="image/png" href="Image/logo.png">
+    
+    <link rel="stylesheet" href="https://unpkg.com/aos@2.3.1/dist/aos.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <nav class="navbar">
+        <div class="nav-container">
+            <!-- Center Logo -->
+            <a href="index.html#hero-section" class="nav-logo">Sandwichef</a>
+
+            <!-- Desktop Menu -->
+            <ul class="nav-links desktop-only">
+                <li><a href="index.html#hero-section">Acasă</a></li>
+                <li><a href="meniu.html" class="active">Meniu</a></li>
+                <li><a href="index.html#description-section">Despre Noi</a></li>
+                <li><a href="#">Catering</a></li>
+                <li><a href="index.html#visit-us-section">Contact</a></li>
+            </ul>
+
+            <!-- Mobile Menu Overlay -->
+            <ul class="nav-links nav-mobile mobile-only" id="navLinks">
+                <li><a href="index.html#hero-section">Acasă</a></li>
+                <li><a href="meniu.html" class="active">Meniu</a></li>
+                <li><a href="index.html#description-section">Despre Noi</a></li>
+                <li><a href="#">Catering</a></li>
+                <li><a href="index.html#visit-us-section">Contact</a></li>
+            </ul>
+
+            <!-- Mobile Menu Toggle -->
+            <button class="menu-toggle" id="menuToggle" aria-label="Toggle menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </div>
+    </nav>
+
+    <!-- Menu Section -->
+    <section class="section-container section-light" style="padding-top: 130px;" data-aos="fade-up">
+        <div class="content-wrapper">
+            <div style="text-align: center; margin-bottom: 40px;">
+                <span class="foodtruck-heading">Meniu Gourmet</span>
+                <h1 class="category-title" style="margin-top: 10px;">Sandwich-uri & Panini</h1>
+                <p class="lead-text" style="font-size: 1.2rem; color: var(--text-color); max-width: 700px; margin: 0 auto;">
+                    Fiecare sandwich este preparat pe loc cu ingrediente proaspete, baghete crocante și sosuri artizanale.
+                </p>
+            </div>
+
+            <!-- List of Sandwich Items (Image Left, Text Right) -->
+            <div class="menu-list-container">
+
+                <!-- Item 1: Mamma Mia -->
+                <article class="menu-item-horizontal" data-aos="fade-up" data-aos-delay="100">
+                    <div class="menu-item-img-wrapper">
+                        <img src="Image/swc-panini-mama-mia.jpeg" alt="Panini Mamma Mia">
+                    </div>
+                    <div class="menu-item-details">
+                        <div class="menu-item-header">
+                            <h3 class="menu-item-name">Panini Mamma Mia</h3>
+                            <span class="menu-item-price-tag">32 LEI</span>
+                        </div>
+                        <p class="menu-item-desc">Ingrediente atent selecționate într-o combinație italiană desăvârșită.</p>
+                        <div class="menu-item-ingredients">
+                            <span class="ingredient-tag">Mortadella cu fistic</span>
+                            <span class="ingredient-tag">Mozzarella fior di latte</span>
+                            <span class="ingredient-tag">Pesto de fistic</span>
+                            <span class="ingredient-tag">Ricotta cremosa</span>
+                            <span class="ingredient-tag">Rucola</span>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- Item 2: Poftă Mare Frate -->
+                <article class="menu-item-horizontal" data-aos="fade-up" data-aos-delay="150">
+                    <div class="menu-item-img-wrapper">
+                        <img src="Image/swc-panini-pofta-mare-frate.jpeg" alt="Panini Poftă Mare Frate">
+                    </div>
+                    <div class="menu-item-details">
+                        <div class="menu-item-header">
+                            <h3 class="menu-item-name">Panini Poftă Mare Frate</h3>
+                            <span class="menu-item-price-tag">34 LEI</span>
+                        </div>
+                        <p class="menu-item-desc">Combinație bogată de ingrediente maturate și sos cremos de trufe.</p>
+                        <div class="menu-item-ingredients">
+                            <span class="ingredient-tag">Prosciutto crudo</span>
+                            <span class="ingredient-tag">Provolone maturat</span>
+                            <span class="ingredient-tag">Sos de trufe</span>
+                            <span class="ingredient-tag">Roșii uscate</span>
+                            <span class="ingredient-tag">Rucola</span>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- Item 3: Morning Bacon -->
+                <article class="menu-item-horizontal" data-aos="fade-up" data-aos-delay="200">
+                    <div class="menu-item-img-wrapper">
+                        <img src="Image/swc-morning-bacon.jpeg" alt="Morning Bacon Sandwich">
+                    </div>
+                    <div class="menu-item-details">
+                        <div class="menu-item-header">
+                            <h3 class="menu-item-name">Morning Bacon Sandwich</h3>
+                            <span class="menu-item-price-tag">28 LEI</span>
+                        </div>
+                        <p class="menu-item-desc">Alegerea perfectă pentru o dimineață plină de energie și gust crocant.</p>
+                        <div class="menu-item-ingredients">
+                            <span class="ingredient-tag">Bacon crocant</span>
+                            <span class="ingredient-tag">Ou ochi</span>
+                            <span class="ingredient-tag">Cheddar topit</span>
+                            <span class="ingredient-tag">Sos BBQ artizanal</span>
+                            <span class="ingredient-tag">Chiflă brioche</span>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- Item 4: Baghetă Fresh -->
+                <article class="menu-item-horizontal" data-aos="fade-up" data-aos-delay="250">
+                    <div class="menu-item-img-wrapper">
+                        <img src="Image/swc-bagheta-fresh.jpeg" alt="Baghetă Fresh">
+                    </div>
+                    <div class="menu-item-details">
+                        <div class="menu-item-header">
+                            <h3 class="menu-item-name">Baghetă Fresh</h3>
+                            <span class="menu-item-price-tag">29 LEI</span>
+                        </div>
+                        <p class="menu-item-desc">Ușor, răcoritor și plin de ingrediente proaspete de calitate.</p>
+                        <div class="menu-item-ingredients">
+                            <span class="ingredient-tag">Șuncă presată</span>
+                            <span class="ingredient-tag">Cașcaval maturat</span>
+                            <span class="ingredient-tag">Castraveți proaspeți</span>
+                            <span class="ingredient-tag">Unt de casă</span>
+                            <span class="ingredient-tag">Baghetă crocantă</span>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- Item 5: Panini Primavera -->
+                <article class="menu-item-horizontal" data-aos="fade-up" data-aos-delay="300">
+                    <div class="menu-item-img-wrapper">
+                        <img src="Image/swc-panini-primavera.jpeg" alt="Panini Primavera">
+                    </div>
+                    <div class="menu-item-details">
+                        <div class="menu-item-header">
+                            <h3 class="menu-item-name">Panini Primavera</h3>
+                            <span class="menu-item-price-tag">30 LEI</span>
+                        </div>
+                        <p class="menu-item-desc">Gust echilibrat și proaspăt inspirat din bucătăria mediteraneană.</p>
+                        <div class="menu-item-ingredients">
+                            <span class="ingredient-tag">Prosciutto cotto</span>
+                            <span class="ingredient-tag">Mozzarella proaspătă</span>
+                            <span class="ingredient-tag">Roșii felii</span>
+                            <span class="ingredient-tag">Pesto genovese</span>
+                            <span class="ingredient-tag">Salată verde</span>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- Item 6: Panini Picante -->
+                <article class="menu-item-horizontal" data-aos="fade-up" data-aos-delay="350">
+                    <div class="menu-item-img-wrapper">
+                        <img src="Image/swc-panini-picante.jpeg" alt="Panini Picante">
+                    </div>
+                    <div class="menu-item-details">
+                        <div class="menu-item-header">
+                            <h3 class="menu-item-name">Panini Picante</h3>
+                            <span class="menu-item-price-tag">33 LEI</span>
+                        </div>
+                        <p class="menu-item-desc">Pentru iubitorii de senzații tari și arome picante intense.</p>
+                        <div class="menu-item-ingredients">
+                            <span class="ingredient-tag">Spianata picantă</span>
+                            <span class="ingredient-tag">Gorgonzola</span>
+                            <span class="ingredient-tag">Cremă de ardei iute</span>
+                            <span class="ingredient-tag">Roșii uscate</span>
+                            <span class="ingredient-tag">Mix salată</span>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- Item 7: Panini Pollo -->
+                <article class="menu-item-horizontal" data-aos="fade-up" data-aos-delay="400">
+                    <div class="menu-item-img-wrapper">
+                        <img src="Image/swc-panini-pollo.jpeg" alt="Panini Pollo">
+                    </div>
+                    <div class="menu-item-details">
+                        <div class="menu-item-header">
+                            <h3 class="menu-item-name">Panini Pollo</h3>
+                            <span class="menu-item-price-tag">31 LEI</span>
+                        </div>
+                        <p class="menu-item-desc">Piept de pui suculent rumenit la grătar cu brânză cheddar și sos cremos.</p>
+                        <div class="menu-item-ingredients">
+                            <span class="ingredient-tag">Piept de pui la grătar</span>
+                            <span class="ingredient-tag">Brânză cheddar</span>
+                            <span class="ingredient-tag">Sos mayo-usturoi</span>
+                            <span class="ingredient-tag">Castraveți murați</span>
+                            <span class="ingredient-tag">Salată iceberg</span>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- Item 8: Salam Picant -->
+                <article class="menu-item-horizontal" data-aos="fade-up" data-aos-delay="450">
+                    <div class="menu-item-img-wrapper">
+                        <img src="Image/swc-salam-picant.jpeg" alt="Sandwich Salam Picant">
+                    </div>
+                    <div class="menu-item-details">
+                        <div class="menu-item-header">
+                            <h3 class="menu-item-name">Sandwich Salam Picant</h3>
+                            <span class="menu-item-price-tag">30 LEI</span>
+                        </div>
+                        <p class="menu-item-desc">Salam artizanal maturat cu brânză topită și sos picant preparat în casă.</p>
+                        <div class="menu-item-ingredients">
+                            <span class="ingredient-tag">Salam picant artizanal</span>
+                            <span class="ingredient-tag">Mozzarella</span>
+                            <span class="ingredient-tag">Sos picant house-made</span>
+                            <span class="ingredient-tag">Ardei copt</span>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- Item 9: Smash Burger Sandwich -->
+                <article class="menu-item-horizontal" data-aos="fade-up" data-aos-delay="500">
+                    <div class="menu-item-img-wrapper">
+                        <img src="Image/swc-smash.jpeg" alt="Smash Burger Sandwich">
+                    </div>
+                    <div class="menu-item-details">
+                        <div class="menu-item-header">
+                            <h3 class="menu-item-name">Smash Burger Sandwich</h3>
+                            <span class="menu-item-price-tag">35 LEI</span>
+                        </div>
+                        <p class="menu-item-desc">Carne suculentă de vită smash, cheddar dublu și ceapă caramelizată.</p>
+                        <div class="menu-item-ingredients">
+                            <span class="ingredient-tag">Vită smash</span>
+                            <span class="ingredient-tag">Cheddar dublu</span>
+                            <span class="ingredient-tag">Ceapă caramelizată</span>
+                            <span class="ingredient-tag">Castraveți murați</span>
+                            <span class="ingredient-tag">Sos special SWC</span>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- Item 10: SWC Wrap -->
+                <article class="menu-item-horizontal" data-aos="fade-up" data-aos-delay="550">
+                    <div class="menu-item-img-wrapper">
+                        <img src="Image/swc-wrap.jpeg" alt="SWC Wrap">
+                    </div>
+                    <div class="menu-item-details">
+                        <div class="menu-item-header">
+                            <h3 class="menu-item-name">SWC Wrap</h3>
+                            <span class="menu-item-price-tag">29 LEI</span>
+                        </div>
+                        <p class="menu-item-desc">Wrap crocant umplut cu pui crispy, salată proaspătă și sos special.</p>
+                        <div class="menu-item-ingredients">
+                            <span class="ingredient-tag">Pui crispy</span>
+                            <span class="ingredient-tag">Tortilla</span>
+                            <span class="ingredient-tag">Salată coleslaw</span>
+                            <span class="ingredient-tag">Sos maioneză cu ierburi</span>
+                        </div>
+                    </div>
+                </article>
+
+            </div>
+
+            <!-- Back Button -->
+            <div style="margin-top: 50px; text-align: center;">
+                <a href="index.html" class="grid-btn-under" style="display: inline-block;">ÎNAPOI LA PAGINA PRINCIPALĂ</a>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <h3 style="font-size: 1.5rem; color: var(--primary-color); margin-bottom: 10px;">Sandwichef</h3>
+        <p style="font-size: 0.8rem; color: #888; margin-top: 20px;">Suntem aici din 2024</p>
+    </footer>
+
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script src="script.js"></script>
+
+    <!-- Back to Top Button -->
+    <button id="backToTop" class="back-to-top" title="Go to top">↑</button>
+
+</body>
+</html>

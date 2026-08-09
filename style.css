@@ -144,7 +144,7 @@ body.no-scroll {
 .nav-links {
     list-style: none;
     display: flex;
-    gap: 30px;
+    gap: 22px;
     margin: 0;
     padding: 0;
     align-items: center;
@@ -1645,5 +1645,61 @@ footer {
         gap: 5px;
         align-items: flex-start;
     }
+}
+
+/* --- CATERING PAGE STYLING --- */
+.catering-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 30px;
+    margin-top: 40px;
+}
+
+.catering-card {
+    background: #ffffff;
+    border-radius: 16px;
+    padding: 35px 25px;
+    box-shadow: var(--shadow-soft);
+    border: 1px solid rgba(0, 0, 0, 0.06);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.catering-card:hover {
+    transform: translateY(-5px);
+    box-shadow: var(--shadow-hover);
+}
+
+.catering-icon {
+    font-size: 3rem;
+    margin-bottom: 20px;
+}
+
+.catering-card h3 {
+    font-family: var(--font-serif);
+    font-size: 1.6rem;
+    color: var(--secondary-color);
+    margin-bottom: 15px;
+    text-transform: uppercase;
+}
+
+.catering-card p {
+    font-size: 0.95rem;
+    color: #555;
+    line-height: 1.6;
+    margin-bottom: 20px;
+}
+
+.catering-tag {
+    background-color: var(--bg-color);
+    color: var(--primary-color);
+    font-weight: 700;
+    font-size: 0.85rem;
+    padding: 6px 14px;
+    border-radius: 50px;
+    border: 1px solid rgba(196, 78, 54, 0.2);
 }
 

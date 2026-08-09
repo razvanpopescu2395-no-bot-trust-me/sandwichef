@@ -109,14 +109,25 @@ body.no-scroll {
     transition: all 0.3s ease;
     text-shadow: none !important;
     padding: 5px 0;
+    display: flex;
+    align-items: center;
 }
 
-.navbar.scrolled .nav-logo {
-    color: var(--primary-color) !important;
+.nav-logo-img {
+    height: 50px;
+    width: auto;
+    max-height: 100%;
+    object-fit: contain;
+    display: block;
+    transition: transform 0.3s ease;
 }
 
-.nav-logo:hover {
-    color: var(--primary-hover) !important;
+.navbar.scrolled .nav-logo-img {
+    height: 44px;
+}
+
+.nav-logo:hover .nav-logo-img {
+    transform: scale(1.05);
 }
 
 .nav-container {
@@ -232,8 +243,9 @@ body.no-scroll {
 
 /* --- HERO SECTION --- */
 #hero-section {
-    height: 75vh;
-    width: 100vw;
+    width: 100%;
+    aspect-ratio: 16 / 9;
+    margin-top: 80px; /* Prevents navbar from overlaying the hero image */
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -1139,9 +1151,10 @@ footer {
     
     /* Hero Adjustments for Mobile */
     #hero-section {
+        margin-top: 70px;
+        aspect-ratio: 16 / 9;
         height: auto;
-        min-height: 75vh;
-        padding: 120px 20px 60px 20px;
+        padding: 40px 20px;
         display: flex;
         flex-direction: column;
         justify-content: center;

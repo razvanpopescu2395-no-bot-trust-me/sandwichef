@@ -7,7 +7,9 @@
     
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@700;800&family=Montserrat:wght@400;600;800;900&family=Permanent+Marker&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;500;600;700;800;900&family=Barlow:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400;1,500&family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Playfair+Display:ital,wght@0,600;0,700;0,800;1,600&display=swap" rel="stylesheet">
+    <link type="text/css" rel="stylesheet" href="https://fonts.googleapis.com/css?family=Google+Sans+Text:400&amp;text=%E2%86%90%E2%86%92%E2%86%91%E2%86%93&amp;lang=en">
+    <link type="text/css" rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Google+Sans:400,500,700|Google+Sans+Text:400,500,700&amp;lang=en">
     
     <link rel="icon" type="image/png" href="Image/logo.png">
     
@@ -24,7 +26,7 @@
             <!-- Desktop Menu -->
             <ul class="nav-links desktop-only">
                 <li><a href="#hero-section">Acasă</a></li>
-                <li><a href="#">Meniu</a></li>
+                <li><a href="meniu.html">Meniu</a></li>
                 <li><a href="#description-section">Despre Noi</a></li>
                 <li><a href="#">Catering</a></li>
                 <li><a href="#visit-us-section">Contact</a></li>
@@ -33,7 +35,7 @@
             <!-- Mobile Menu Overlay -->
             <ul class="nav-links nav-mobile mobile-only" id="navLinks">
                 <li><a href="#hero-section">Acasă</a></li>
-                <li><a href="#">Meniu</a></li>
+                <li><a href="meniu.html">Meniu</a></li>
                 <li><a href="#description-section">Despre Noi</a></li>
                 <li><a href="#">Catering</a></li>
                 <li><a href="#visit-us-section">Contact</a></li>
@@ -58,74 +60,93 @@
     <!-- 2. Description -->
     <section id="description-section" class="section-container section-light" data-aos="fade-up">
         <div class="content-wrapper text-box">
-            <span class="foodtruck-heading">Povestea Noastră</span>
-            <h2 class="category-title" style="margin-top: 10px;">Sandwichef Craiova</h2>
-            <p class="lead-text" style="font-size: 1.3rem; font-weight: 600; margin-bottom: 20px; color: var(--primary-color);">La Sandwichef, definim experiența gustului urban prin sandwich-uri gourmet realizate cu pasiune.</p>
-            <p>Folosim doar ingrediente premium, baghete proaspăt coapte și sosuri artizanale pregătite în casă după rețete secrete. Fiecare sandwich este o operă de artă culinară, de la clasicul cu bacon până la paniniurile sofisticate cu mortadella și gorgonzola.</p>
-            <p>Te invităm să descoperi gustul autentic al calității în inima Craiovei!</p>
+            <h2 style="margin-top: 10px; text-align: center">Sandwichef Craiova</h2><br>
+            <p>Sandwich, panini, bagheta sau wrap. Aici oferim o experienta de neuitat pentru iubitorii de bunatati. Avem ingrediente proaspete in fiecare zi, retete unice si pline de savoare iar mancarea este perfecta pentru orice moment al zilei ! </p>
+            <p><br></p>
+            <p class="lead-text" style="text-align: center; font-size: 1.3rem; font-weight: 600; margin-bottom: 20px; color: var(--primary-color);">Te invităm să descoperi gustul autentic al calității în inima Craiovei!</p>
         </div>
     </section>
 
     <!-- 3. 4 pictures with buttons MENU CATERING ORDER and OUR STORY -->
-    <section id="nav-grid-section" class="section-container section-dark" data-aos="fade-up">
+    <section id="nav-grid-section" class="section-container section-light" data-aos="fade-up">
         <div class="content-wrapper">
             <div class="nav-grid">
                 <div class="grid-item" data-aos="zoom-in" data-aos-delay="100">
                     <div class="grid-img-container">
-                        <img src="Image/morning-bacon.jpeg" alt="Menu" class="grid-img">
+                        <img src="Image/swc-bacon.jpeg" alt="Meniu" class="grid-img">
                     </div>
-                    <a href="#" class="grid-btn-under">MENU</a>
+                    <a href="meniu.html" class="grid-btn-under">MENIU</a>
                 </div>
                 <div class="grid-item" data-aos="zoom-in" data-aos-delay="200">
                     <div class="grid-img-container">
-                        <img src="Image/bagheta-fresh.jpeg" alt="Catering" class="grid-img">
+                        <img src="Image/swc-catering.jpeg" alt="Catering" class="grid-img">
                     </div>
                     <a href="#" class="grid-btn-under">CATERING</a>
                 </div>
                 <div class="grid-item" data-aos="zoom-in" data-aos-delay="300">
                     <div class="grid-img-container">
-                        <img src="Image/panini-pofta-mare.jpeg" alt="Order" class="grid-img">
+                        <img src="Image/swc-panini-pofta-mare-frate.jpeg" alt="Comanda" class="grid-img">
                     </div>
-                    <a href="#visit-us-section" class="grid-btn-under">ORDER</a>
+                    <a href="#visit-us-section" class="grid-btn-under">COMANDA</a>
                 </div>
                 <div class="grid-item" data-aos="zoom-in" data-aos-delay="400">
                     <div class="grid-img-container">
-                        <img src="Image/panini-mamma-mia.jpeg" alt="Our Story" class="grid-img">
+                        <img src="Image/swc-locatie.jpeg" alt="Despre noi" class="grid-img">
                     </div>
-                    <a href="#description-section" class="grid-btn-under">OUR STORY</a>
+                    <a href="#description-section" class="grid-btn-under">DESPRE NOI</a>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- 4. Follow us (and 4 pictures) -->
+
+
+    <!-- 4. Follow us -->
     <section id="follow-us-section" class="section-container section-light" data-aos="fade-up">
         <div class="content-wrapper text-center" style="text-align: center;">
-            <span class="foodtruck-heading">Social</span>
-            <h2 class="category-title" style="margin-top: 10px;">Follow Us</h2>
-            <a href="https://www.instagram.com/sandwichefcraiova/" target="_blank" class="instagram-handle" style="display: block; font-size: 1.5rem; font-weight: 800; color: var(--primary-color); text-decoration: none; margin-bottom: 30px;">@sandwichefcraiova</a>
+            <h2 class="category-title" style="margin-top: 10px;">Ne gasesti si online</h2>
             
-            <div class="instagram-grid">
-                <div class="instagram-item" data-aos="fade-up" data-aos-delay="100">
-                    <img src="Image/cartofi-prajiti.jpeg" alt="Instagram Post 1">
+            <div class="social-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 40px; margin-top: 40px;">
+                <!-- Instagram -->
+                <div class="social-item" data-aos="fade-up" data-aos-delay="100">
+                    <h3 style="font-size: 1.8rem; color: var(--primary-color); margin-bottom: 10px;">Instagram</h3>
+                    <a href="https://www.instagram.com/sandwichefcraiova/" target="_blank" style="text-decoration: none;">
+                        <p style="font-size: 1.2rem; font-weight: 700; color: #333; margin-bottom: 20px;">@sandwichefcraiova</p>
+                        <div style="border-radius: 15px; overflow: hidden; box-shadow: var(--shadow-soft); height: 250px;">
+                            <img src="Image/swc-panini-primavera.jpeg" alt="Instagram" style="width: 100%; height: 100%; object-fit: cover;">
+                        </div>
+                    </a>
                 </div>
-                <div class="instagram-item" data-aos="fade-up" data-aos-delay="200">
-                    <img src="Image/panini-napoli.jpeg" alt="Instagram Post 2">
+
+                <!-- TikTok -->
+                <div class="social-item" data-aos="fade-up" data-aos-delay="200">
+                    <h3 style="font-size: 1.8rem; color: var(--primary-color); margin-bottom: 10px;">TikTok</h3>
+                    <a href="https://www.tiktok.com/@sandwichef1" target="_blank" style="text-decoration: none;">
+                        <p style="font-size: 1.2rem; font-weight: 700; color: #333; margin-bottom: 20px;">@sandwichef1</p>
+                        <div style="border-radius: 15px; overflow: hidden; box-shadow: var(--shadow-soft); height: 250px;">
+                            <img src="Image/swc-panini-picante.jpeg" alt="TikTok" style="width: 100%; height: 100%; object-fit: cover;">
+                        </div>
+                    </a>
                 </div>
-                <div class="instagram-item" data-aos="fade-up" data-aos-delay="300">
-                    <img src="Image/panini-picante.jpeg" alt="Instagram Post 3">
-                </div>
-                <div class="instagram-item" data-aos="fade-up" data-aos-delay="400">
-                    <img src="Image/panini-pollo.jpeg" alt="Instagram Post 4">
+
+                <!-- Facebook -->
+                <div class="social-item" data-aos="fade-up" data-aos-delay="300">
+                    <h3 style="font-size: 1.8rem; color: var(--primary-color); margin-bottom: 10px;">Facebook</h3>
+                    <a href="https://www.facebook.com/p/Sandwichef-61552030004351/" target="_blank" style="text-decoration: none;">
+                        <p style="font-size: 1.2rem; font-weight: 700; color: #333; margin-bottom: 20px;">Sandwichef</p>
+                        <div style="border-radius: 15px; overflow: hidden; box-shadow: var(--shadow-soft); height: 250px;">
+                            <img src="Image/swc-panini-pollo.jpeg" alt="Facebook" style="width: 100%; height: 100%; object-fit: cover;">
+                        </div>
+                    </a>
                 </div>
             </div>
         </div>
     </section>
 
     <!-- 5. Visit us -->
-    <section id="visit-us-section" class="section-container section-dark" data-aos="fade-up">
+    <section id="visit-us-section" class="section-container section-light" data-aos="fade-up">
         <div class="content-wrapper">
-            <h2 class="category-title">Visit Us</h2>
+            <h2 class="category-title">Cum dai de noi?</h2>
             <div class="info-grid">
                 <!-- Left Column: Map & Buttons -->
                 <div class="map-wrapper">
@@ -142,37 +163,39 @@
                     </div>
                 </div>
 
-                <!-- Right Column: Info & Socials & Order -->
+                <!-- Right Column: Info & Schedule -->
                 <div class="info-text" style="display: flex; flex-direction: column; justify-content: center; text-align: left;">
-                    <span class="foodtruck-heading">Unde ne găsești?</span>
-                    <h3 style="font-family: 'Permanent Marker', cursive; font-size: 2rem; color: #fff; margin-bottom: 20px;">Contact & Program</h3>
-                    <p>📍 <strong>Adresă:</strong> Craiova, România (vezi harta)</p>
-                    <p>📞 <strong>Telefon ridicări:</strong> <a href="tel:0735468253" style="color: var(--primary-color); font-weight: bold; text-decoration: none;">0735 468 253</a></p>
-                    <p>🕒 <strong>Orar:</strong> Luni - Duminică: 10:00 - 22:00</p>
-                    
-                    <div class="order-delivery-options" style="margin-top: 30px; width: 100%;">
-                        <h4 style="text-transform: uppercase; letter-spacing: 1px; margin-bottom: 15px; color: var(--accent-yellow); font-weight: 800;">Comandă Rapidă</h4>
-                        <div class="delivery-buttons-vertical" style="display: flex; flex-direction: column; gap: 10px; width: 100%;">
-                            <a href="tel:0735468253" class="btn-delivery" style="justify-content: center; width: 100%;">
-                                📞 Ridicare Personală
-                            </a>
-                            <a href="https://food.bolt.eu/ro-ro/1052-craiova/p/91364-sandwichef/" class="btn-delivery btn-bolt" target="_blank" style="justify-content: center; width: 100%;">
-                                🟢 Bolt Food
-                            </a>
-                            <a href="https://wolt.com/ro/rou/craiova/restaurant/sandwichef-68dfdfbd3a8557c375c011d6?srsltid=AfmBOorT-GAmrWdlOTdTb2O0xS_l4nXqrl9mdEkTaOcfofmVe0IJ94zg" class="btn-delivery btn-wolt" target="_blank" style="justify-content: center; width: 100%;">
-                                🔵 Wolt
-                            </a>
-                        </div>
-                    </div>
+                    <p style="font-size: 1.2rem; margin-bottom: 20px;">📍 <strong>Adresă:</strong> Str. Amaradia, Nr. 29, Craiova</p>
+                    <p style="font-size: 1.2rem; margin-bottom: 20px;">📞 <strong>Telefon:</strong> <a href="tel:0735468253" style="color: var(--primary-color); font-weight: bold; text-decoration: none;">0735 468 253</a></p>
+                    <p style="font-size: 1.2rem; margin-bottom: 20px;">🕒 <strong>Orar:</strong> Luni - Vineri: 9:30 - 17:30</p>
                 </div>
             </div>
         </div>
     </section>
 
+    <!-- 6. Order / Delivery Options -->
+    <section id="order-section" class="section-container section-light" data-aos="fade-up">
+        <div class="content-wrapper text-center" style="text-align: center;">
+            <h2 class="category-title">Opțiuni de comandă</h2>
+            <p class="lead-text">Comandă simplu și rapid prin telefon sau prin aplicațiile partenere:</p>
+            
+            <div class="delivery-buttons-container" style="display: flex; justify-content: center; gap: 20px; flex-wrap: wrap; max-width: 800px; margin: 0 auto;">
+                <a href="tel:0735468253" class="btn-delivery" style="padding: 14px 30px; font-size: 1.05rem;">
+                    📞 Ridicare Personală
+                </a>
+                <a href="https://food.bolt.eu/ro-ro/1052-craiova/p/91364-sandwichef/" class="btn-delivery btn-bolt" target="_blank" style="padding: 14px 30px; font-size: 1.05rem;">
+                    🟢 Bolt Food
+                </a>
+                <a href="https://wolt.com/ro/rou/craiova/restaurant/sandwichef-68dfdfbd3a8557c375c011d6?srsltid=AfmBOorT-GAmrWdlOTdTb2O0xS_l4nXqrl9mdEkTaOcfofmVe0IJ94zg" class="btn-delivery btn-wolt" target="_blank" style="padding: 14px 30px; font-size: 1.05rem;">
+                    🔵 Wolt
+                </a>
+            </div>
+        </div>
+    </section>
+
     <footer>
-        <h3 style="font-family: 'Permanent Marker', cursive; font-size: 1.5rem; color: var(--primary-color); margin-bottom: 10px;">Sandwichef România</h3>
-        <p>Ingrediente proaspete, gust autentic.</p>
-        <p style="font-size: 0.8rem; color: #888; margin-top: 20px;">© 2026 Toate drepturile rezervate.</p>
+        <h3 style="font-size: 1.5rem; color: var(--primary-color); margin-bottom: 10px;">Sandwichef</h3>
+        <p style="font-size: 0.8rem; color: #888; margin-top: 20px;">Suntem aici din 2024</p>
     </footer>
 
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>

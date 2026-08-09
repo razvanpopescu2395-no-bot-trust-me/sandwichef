@@ -9,7 +9,7 @@ window.addEventListener('scroll', function() {
 
 // Initialize AOS (Animate on Scroll)
 AOS.init({
-    duration: 400,
+    duration: 600,
     offset: 30,
     once: true,
     mirror: false

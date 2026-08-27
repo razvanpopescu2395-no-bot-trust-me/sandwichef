@@ -1,26 +1,11 @@
-@font-face {
-    font-family: 'nexa-1';
-    src: url('https://zmoke.ro/wp-content/uploads/useanyfont/8314Nexa-1.woff2') format('woff2'),
-         url('https://zmoke.ro/wp-content/uploads/useanyfont/8314Nexa-1.woff') format('woff');
-    font-weight: 700;
-    font-style: normal;
-    font-display: swap;
-}
-
-@font-face {
-    font-family: 'NEXA RUST SANS BLACK 1';
-    src: url('https://zmoke.ro/wp-content/uploads/2024/11/NEXA-RUST-SANS-BLACK-01.woff') format('woff');
-    font-weight: normal;
-    font-style: normal;
-    font-display: swap;
-}
+@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Serif:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;1,100;1,200;1,300;1,400;1,500;1,600;1,700&display=swap');
 
 /* --- SETARI GENERALE SI VARIABILE --- */
 :root {
-    --font-title: 'Google Sans', sans-serif;
-    --font-serif: 'Google Sans', sans-serif;
-    --font-sans: 'Google Sans Text', 'Roboto', sans-serif;
-    --font-sans-condensed: 'Google Sans Text', 'Roboto', sans-serif;
+    --font-title: 'IBM Plex Serif', serif;
+    --font-serif: 'IBM Plex Serif', serif;
+    --font-sans: 'IBM Plex Serif', serif;
+    --font-sans-condensed: 'IBM Plex Serif', serif;
     --primary-color: #C44E36; /* Calm Coral Red-Orange */
     --primary-hover: #A63B25;
     --secondary-color: #2D1F18; /* Brand Deep Toasted Brown */
@@ -44,8 +29,11 @@ html {
     box-sizing: border-box;
 }
 
-body {
+body, button, input, select, textarea {
     font-family: var(--font-sans);
+}
+
+body {
     background-color: var(--bg-color);
     color: var(--text-color);
     line-height: 1.6;
